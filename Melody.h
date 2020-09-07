@@ -11,9 +11,11 @@ class Melody
 {
 
 public:
-	virtual bool hasNext();
-	virtual void restart();
-	virtual Note next();
+	Melody();
+	~Melody();
+	virtual bool hasNext()=0;
+	virtual void restart()=0;
+	virtual Note* next()=0;
 
 };
 

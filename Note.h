@@ -9,11 +9,11 @@ class Note
 
 public:
 	Note();
-	virtual int getNoteIndex();
-	virtual bool isRest();
-	unsigned int getDurationNumerator() { return 1; };
-	unsigned int getDurationDenominator() { return 1; }
-	int getIntensity() { return 0; }
+	virtual int getNoteIndex()=0;
+	virtual bool isRest()=0;
+	virtual unsigned int getDurationNumerator() { return 1; };
+	virtual unsigned int getDurationDenominator() { return 1; }
+	virtual int getIntensity() { return 0; }
 };
 
 #endif
