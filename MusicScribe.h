@@ -8,7 +8,7 @@
 #define SYMBOLE_UN_QUART '!'
 #define SYMBOLE_TROIS_QUART '%'
 
-Premi#define BASE_DURATION 500
+#define BASE_DURATION 500
 
 #include "Arduino.h"
 
