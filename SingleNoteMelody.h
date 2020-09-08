@@ -14,13 +14,20 @@ class SingleNoteMelody : public Melody
 public:
 	SingleNoteMelody(Note *);
 	~SingleNoteMelody();
+
 	bool hasNext();
 	void restart();
-	Note *next();
+	void next();
+	int length() { return 1; };
+	int getNoteIndex();
+	bool isRest();
+	unsigned int getDurationNumerator();
+	unsigned int getDurationDenominator();
+	int getIntensity();
 
 public:
 	Note *_note;
-	bool _played;
+
 };
 
 #endif

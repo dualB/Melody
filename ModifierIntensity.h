@@ -9,11 +9,7 @@ class ModifierIntensity : public Modifier
 {
 
 public:
-	ModifierIntensity(int deltaIntensity);
-	int getNoteIndex();
-	bool isRest();
-	unsigned int getDurationNumerator();
-	unsigned int getDurationDenominator();
+	ModifierIntensity(int deltaIntensity, Melody *note = nullptr);
 	int getIntensity();
 
 protected:

@@ -9,12 +9,10 @@ class ModifierDuration : public Modifier
 {
 
 public:
-	ModifierDuration(unsigned int numerator, unsigned int denominator);
-	int getNoteIndex();
-	bool isRest();
+	ModifierDuration(unsigned int numerator, unsigned int denominator, Melody *note = nullptr);
+
 	unsigned int getDurationNumerator();
 	unsigned int getDurationDenominator();
-	int getIntensity();
 
 protected:
 private:

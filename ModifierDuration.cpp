@@ -1,10 +1,10 @@
 #include "ModifierDuration.h"
 
-ModifierDuration::ModifierDuration(unsigned int numerator, unsigned int denominator)
+ModifierDuration::ModifierDuration(unsigned int numerator, unsigned int denominator,Melody *note): Modifier(note)
 {
     _numerator = numerator;
     _denominator = denominator;
 }
 
-unsigned int ModifierDuration::getDurationNumerator() { return _numerator * getBase()->getDurationNumerator(); }
-unsigned int ModifierDuration::getDurationDenominator() { return _denominator * getBase()->getDurationDenominator(); }
+unsigned int ModifierDuration::getDurationNumerator() { return _numerator * get()->getDurationNumerator(); }
+unsigned int ModifierDuration::getDurationDenominator() { return _denominator * get()->getDurationDenominator(); }

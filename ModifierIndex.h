@@ -9,12 +9,8 @@ class ModifierIndex : public Modifier
 {
 
 public:
-	ModifierIndex(int deltaIndex);
+	ModifierIndex(int deltaIndex,Melody * note=nullptr);
 	int getNoteIndex();
-	bool isRest();
-	unsigned int getDurationNumerator();
-	unsigned int getDurationDenominator();
-	int getIntensity();
 
 protected:
 private:

@@ -1,15 +1,16 @@
 #include "Modifier.h"
 
-Modifier::Modifier()
+Modifier::Modifier(Melody * melody)
 {
+    set(melody);
 }
 
-void Modifier::setBase(Note *base)
+void Modifier::set(Melody *base)
 {
     _base = base;
 }
 
-Note *Modifier::getBase()
+Melody *Modifier::get()
 {
     return _base;
 }

@@ -7,7 +7,7 @@
 /******************************************************************************
 * Definitions
 ******************************************************************************/
-class Melody 
+class Melody : public Note
 {
 
 public:
@@ -15,7 +15,8 @@ public:
 	~Melody();
 	virtual bool hasNext()=0;
 	virtual void restart()=0;
-	virtual Note* next()=0;
+	virtual void next()=0;
+	virtual int length()=0;
 
 };
 

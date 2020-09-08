@@ -1,27 +1,46 @@
 #include "SingleNoteMelody.h"
-
+#include "Arduino.h"
 SingleNoteMelody::SingleNoteMelody(Note *note)
 {
-    _played = false;
+
     _note = note;
 }
 
 SingleNoteMelody::~SingleNoteMelody()
 {
-    delete _note;
     _note = nullptr;
 }
 
 bool SingleNoteMelody::hasNext()
 {
-    return !_played;
+   return false;
 }
 void SingleNoteMelody::restart()
 {
-    _played = false;
+ 
 }
-Note *SingleNoteMelody::next()
+void SingleNoteMelody::next()
 {
-    _played = true;
-    return _note;
+  
+}
+
+int SingleNoteMelody::getNoteIndex()
+{
+    return _note->getNoteIndex();
+}
+bool SingleNoteMelody::isRest()
+{
+    return _note->isRest();
+}
+unsigned int SingleNoteMelody::getDurationNumerator()
+{
+    return _note->getDurationNumerator();
+}
+unsigned int SingleNoteMelody::getDurationDenominator()
+{
+    return _note->getDurationDenominator();
+}
+int SingleNoteMelody::getIntensity()
+{
+    return _note->getIntensity();
 }

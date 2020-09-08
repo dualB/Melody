@@ -1,26 +1,32 @@
 #ifndef Modifier_h
 #define Modifier_h
 
-#include "Note.h"
+#include "Melody.h"
 /******************************************************************************
 * Definitions
 ******************************************************************************/
-class Modifier : public Note
+class Modifier : public Melody
 {
 
 public:
-	Modifier();
-	void setBase(Note *);
-	Note *getBase();
-	virtual int getNoteIndex() { return getBase()->getNoteIndex(); }
-	virtual bool isRest() { return getBase()->isRest(); }
-	virtual unsigned int getDurationNumerator() { return getBase()->getDurationNumerator(); }
-	virtual unsigned int getDurationDenominator() { return getBase()->getDurationDenominator(); }
-	virtual int getIntensity() { return getBase()->getIntensity(); }
+	Modifier(Melody *melody = nullptr);
+	void set(Melody *);
+	Melody *get();
+
+	bool hasNext() { return get()->hasNext(); };
+	void restart() { get()->restart(); }
+	void next() { get()->next(); };
+	int length() { return get()->length(); };
+
+	int getNoteIndex() { return get()->getNoteIndex(); }
+	bool isRest() { return get()->isRest(); }
+	unsigned int getDurationNumerator() { return get()->getDurationNumerator(); }
+	unsigned int getDurationDenominator() { return get()->getDurationDenominator(); }
+	int getIntensity() { return get()->getIntensity(); }
 
 protected:
 private:
-	Note *_base;
+	Melody *_base;
 };
 
 #endif

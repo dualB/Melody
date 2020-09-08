@@ -1,6 +1,6 @@
-#ifndef SimpleMelody_h
+#ifndef EmptyMelody_h
 
-#define SimpleMelody_h
+#define EmptyMelody_h
 
 #include "Melody.h"
 #include "Note.h"
@@ -8,20 +8,14 @@
 /******************************************************************************
 * Definitions
 ******************************************************************************/
-struct Node
-{
-	Melody *melody;
-	struct Node *next;
-};
 
-class SimpleMelody : public Melody
+class EmptyMelody : public Melody
 {
 
 public:
-	SimpleMelody();
-	~SimpleMelody();
-	void addMelody(Melody *);
-
+	EmptyMelody();
+	~EmptyMelody();
+	
 	bool hasNext();
 	void restart();
 	void next();
@@ -33,9 +27,7 @@ public:
 	unsigned int getDurationDenominator();
 	int getIntensity();
 
-private:
-	Node *_head;
-	Node *_cursor;
+
 
 };
 
