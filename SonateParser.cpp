@@ -140,7 +140,7 @@ Melody *SonateParser::parseModifier(Stream *stream, Melody *original)
         case SYMBOL_DURATION_THREE_QUARTER:
             Serial.println("ICI duration");
             cur = new ModifierDuration(c == SYMBOL_DURATION_THREE_QUARTER ? 3 : c == SYMBOL_DURATION_DOUBLE ? 2 : 1,
-                                       c == SYMBOL_DURATION_THREE_QUARTER ? 4 : c == SYMBOL_DURATION_DOUBLE ? 1 : 2,
+                                       c == SYMBOL_DURATION_THREE_QUARTER ? 2 : c == SYMBOL_DURATION_DOUBLE ? 1 : 2,
                                        cur);
             break;
         case SYMBOL_DYNAMICS_PIANO:
