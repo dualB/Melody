@@ -13,17 +13,18 @@ SingleNoteMelody::~SingleNoteMelody()
 
 bool SingleNoteMelody::hasNext()
 {
-   return false;
+    return false;
 }
 void SingleNoteMelody::restart()
 {
- 
 }
 void SingleNoteMelody::next()
 {
-  
 }
-
+int SingleNoteMelody::length()
+{
+    return 1;
+}
 int SingleNoteMelody::getNoteIndex()
 {
     return _note->getNoteIndex();

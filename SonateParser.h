@@ -52,14 +52,21 @@
 #define SYMBOL_WHITESPACE_CARRIAGE_RETURN '\r'
 #define SYMBOL_WHITESPACE_HORIZONTAL_TAB '\t'
 
-struct Modifier
+enum State
 {
-    int noteIndex;
-    unsigned int durationNumerator;
-    unsigned int durationDenominator;
-    int intensity;
+    REPEAT,
+    TUPLE,
+    NOTE,
+    GROUP,
+    MODIFIER,
+    MELODY,
+    WS
 };
 
+#include "Melody.h"
+#include "Modifier.h"
+#include "Stream.h"
+#include "Arduino.h"
 /******************************************************************************
 * Definitions
 ******************************************************************************/
@@ -68,9 +75,54 @@ class SonateParser
 
 public:
     SonateParser();
+    Melody *parse(Stream *);
+    Melody *parse(char *);
 
 protected:
 private:
+    bool isWS(char);
+    bool isModifier(char);
+    bool isNumber(char);
+    bool isNote(char);
+    bool isName(char);
+    bool isGroupBegin(char);
+    bool isGroupEnd(char);
+
+    Note *noteOf(char);
+    Melody *parseMelody(Stream *);
+    Melody *parseGroup(Stream *);
+    Melody *parseNote(Stream *);
+    Melody *parseModifier(Stream *, Melody *);
+    Melody *parseRepetition(Stream *, Melody *);
+    Melody *parseTuplet(Stream *, Melody *);
+
+    unsigned int parseInteger(Stream *);
+    void parseWS(Stream *);
+
+    class StreamOfString : public Stream //Inspired bt
+    {
+    public:
+        StreamOfString(char *str) : string(str), _cur(0), _length(0)
+        {
+            for (int i = 0; str[i] != '\0'; i++)
+            {
+                _length++;
+            }
+        }
+        int available() { return _length - _cur; }
+        int read() { return _cur < _length ? string[_cur++] : -1; }
+        int peek() { return _cur < _length ? string[_cur] : -1; }
+        void flush(){};
+        size_t write(uint8_t c)
+        {
+            return 0;
+        };
+
+    private:
+        char *string;
+        unsigned int _cur;
+        unsigned int _length;
+    }; // definition of nested class
 };
 
 #endif

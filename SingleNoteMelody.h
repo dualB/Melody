@@ -18,7 +18,8 @@ public:
 	bool hasNext();
 	void restart();
 	void next();
-	int length() { return 1; };
+	int length() ;
+	
 	int getNoteIndex();
 	bool isRest();
 	unsigned int getDurationNumerator();
