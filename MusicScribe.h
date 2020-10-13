@@ -36,7 +36,7 @@ protected:
 	unsigned int getFrequency(int);
 
 private:
-	class StreamOfString : public Stream //Inspired bt
+	class StreamOfString : public Stream //Inspired by
 	{
 	public:
 		StreamOfString(char *str) : string(str), _cur(0), _length(0)

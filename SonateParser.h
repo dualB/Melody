@@ -52,17 +52,6 @@
 #define SYMBOL_WHITESPACE_CARRIAGE_RETURN '\r'
 #define SYMBOL_WHITESPACE_HORIZONTAL_TAB '\t'
 
-enum State
-{
-    REPEAT,
-    TUPLE,
-    NOTE,
-    GROUP,
-    MODIFIER,
-    MELODY,
-    WS
-};
-
 #include "Melody.h"
 #include "Modifier.h"
 #include "Stream.h"
@@ -99,7 +88,7 @@ private:
     unsigned int parseInteger(Stream *);
     void parseWS(Stream *);
 
-    class StreamOfString : public Stream //Inspired bt
+    class StreamOfString : public Stream
     {
     public:
         StreamOfString(char *str) : string(str), _cur(0), _length(0)
@@ -122,7 +111,7 @@ private:
         char *string;
         unsigned int _cur;
         unsigned int _length;
-    }; // definition of nested class
+    }; 
 };
 
 #endif

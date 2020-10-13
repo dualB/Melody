@@ -10,6 +10,15 @@
 #include "ModifierIntensity.h"
 #include "ModifierIndex.h"
 
+static RealNote *noteA = new RealNote(0, false);
+static RealNote *noteB = new RealNote(2, false);
+static RealNote *noteC = new RealNote(-9, false);
+static RealNote *noteD = new RealNote(-7, false);
+static RealNote *noteE = new RealNote(-5, false);
+static RealNote *noteF = new RealNote(-4, false);
+static RealNote *noteG = new RealNote(-2, false);
+static RealNote *rest = new RealNote(0, true);
+
 SonateParser::SonateParser()
 {
 }
@@ -241,14 +250,7 @@ bool SonateParser::isModifier(char c)
            c == SYMBOL_REPEAT_BEGIN_UPPERCASE || c == SYMBOL_REPEAT_BEGIN_LOWERCASE;
 }
 
-static RealNote *noteA = new RealNote(0, false);
-static RealNote *noteB = new RealNote(2, false);
-static RealNote *noteC = new RealNote(-9, false);
-static RealNote *noteD = new RealNote(-7, false);
-static RealNote *noteE = new RealNote(-5, false);
-static RealNote *noteF = new RealNote(-4, false);
-static RealNote *noteG = new RealNote(-2, false);
-static RealNote *rest = new RealNote(0, true);
+
 
 Note *SonateParser::noteOf(char c)
 {
