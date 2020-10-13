@@ -40,7 +40,7 @@ unsigned int EmptyMelody::getDurationDenominator()
 {
     return 1;
 }
-int EmptyMelody::getIntensity()
+int EmptyMelody::getIntensityIndex()
 {
     return 0;
 }

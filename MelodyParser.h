@@ -1,5 +1,5 @@
-#ifndef SonateParser_h
-#define SonateParser_h
+#ifndef MelodyParser_h
+#define MelodyParser_h
 
 #define SYMBOL_SEMITONE_UP '#'
 #define SYMBOL_SEMITONE_DOWN ','
@@ -54,16 +54,16 @@
 
 #include "Melody.h"
 #include "Modifier.h"
+
 #include "Stream.h"
-#include "Arduino.h"
 /******************************************************************************
 * Definitions
 ******************************************************************************/
-class SonateParser
+class MelodyParser
 {
 
 public:
-    SonateParser();
+    MelodyParser();
     Melody *parse(Stream *);
     Melody *parse(char *);
 
@@ -111,7 +111,7 @@ private:
         char *string;
         unsigned int _cur;
         unsigned int _length;
-    }; 
+    };
 };
 
 #endif

@@ -104,7 +104,7 @@ unsigned int SimpleMelody::getDurationDenominator()
 {
     return _cursor->melody->getDurationDenominator();
 }
-int SimpleMelody::getIntensity()
+int SimpleMelody::getIntensityIndex()
 {
-    return _cursor->melody->getIntensity();
+    return _cursor->melody->getIntensityIndex();
 }

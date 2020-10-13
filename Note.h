@@ -13,7 +13,7 @@ public:
 	virtual bool isRest()=0;
 	virtual unsigned int getDurationNumerator() { return 1; };
 	virtual unsigned int getDurationDenominator() { return 1; }
-	virtual int getIntensity() { return 0; }
+	virtual int getIntensityIndex() { return 0; }
 };
 
 #endif

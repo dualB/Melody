@@ -6,4 +6,4 @@ ModifierIntensity::ModifierIntensity( int deltaIntensity,Melody *note): Modifier
     _deltaIntensity = deltaIntensity;
 }
 
-int ModifierIntensity::getIntensity() { return _deltaIntensity + get()->getIntensity(); }
+int ModifierIntensity::getIntensityIndex() { return _deltaIntensity + get()->getIntensityIndex(); }

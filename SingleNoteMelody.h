@@ -24,7 +24,7 @@ public:
 	bool isRest();
 	unsigned int getDurationNumerator();
 	unsigned int getDurationDenominator();
-	int getIntensity();
+	int getIntensityIndex();
 
 public:
 	Note *_note;

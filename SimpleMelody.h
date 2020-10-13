@@ -31,7 +31,7 @@ public:
 	bool isRest();
 	unsigned int getDurationNumerator();
 	unsigned int getDurationDenominator();
-	int getIntensity();
+	int getIntensityIndex();
 
 private:
 	Node *_head;

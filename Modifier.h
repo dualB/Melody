@@ -22,7 +22,7 @@ public:
 	bool isRest() { return get()->isRest(); }
 	unsigned int getDurationNumerator() { return get()->getDurationNumerator(); }
 	unsigned int getDurationDenominator() { return get()->getDurationDenominator(); }
-	int getIntensity() { return get()->getIntensity(); }
+	int getIntensityIndex() { return get()->getIntensityIndex(); }
 
 protected:
 private:

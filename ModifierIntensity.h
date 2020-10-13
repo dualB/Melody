@@ -10,7 +10,7 @@ class ModifierIntensity : public Modifier
 
 public:
 	ModifierIntensity(int deltaIntensity, Melody *note = nullptr);
-	int getIntensity();
+	int getIntensityIndex();
 
 protected:
 private:

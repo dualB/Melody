@@ -41,7 +41,7 @@ unsigned int SingleNoteMelody::getDurationDenominator()
 {
     return _note->getDurationDenominator();
 }
-int SingleNoteMelody::getIntensity()
+int SingleNoteMelody::getIntensityIndex()
 {
-    return _note->getIntensity();
+    return _note->getIntensityIndex();
 }

@@ -1,5 +1,4 @@
 #ifndef EmptyMelody_h
-
 #define EmptyMelody_h
 
 #include "Melody.h"
@@ -25,7 +24,7 @@ public:
 	bool isRest();
 	unsigned int getDurationNumerator();
 	unsigned int getDurationDenominator();
-	int getIntensity();
+	int getIntensityIndex();
 
 
 
