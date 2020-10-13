@@ -4,6 +4,7 @@ SingleNoteMelody::SingleNoteMelody(Note *note)
 {
 
     _note = note;
+    _hasNext = false;
 }
 
 SingleNoteMelody::~SingleNoteMelody()
@@ -13,13 +14,15 @@ SingleNoteMelody::~SingleNoteMelody()
 
 bool SingleNoteMelody::hasNext()
 {
-    return false;
+    return _hasNext;
 }
 void SingleNoteMelody::restart()
 {
+    _hasNext = true;
 }
 void SingleNoteMelody::next()
 {
+    _hasNext = false;
 }
 int SingleNoteMelody::length()
 {

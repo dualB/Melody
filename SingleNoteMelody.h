@@ -28,6 +28,7 @@ public:
 
 public:
 	Note *_note;
+	bool _hasNext;
 
 };
 

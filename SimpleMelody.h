@@ -1,8 +1,8 @@
 #ifndef SimpleMelody_h
-
 #define SimpleMelody_h
 
 #include "Melody.h"
+#include "EmptyMelody.h"
 #include "Note.h"
 
 /******************************************************************************
