@@ -6,6 +6,8 @@
 #include "MelodyParser.h"
 #include "SimpleMelody.h"
 #include "MelodyToSound.h"
+
+#define DEFAULT_TEMPO 120
 /******************************************************************************
 * Definitions
 ******************************************************************************/
@@ -17,7 +19,6 @@ public:
 	bool setTempo(unsigned int);
 	unsigned int getTempo();
 	bool setPartition(char *);
-
 	bool hasNext();
 	void restart();
 	void next();

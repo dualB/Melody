@@ -3,6 +3,7 @@
 MusicParser::MusicParser()
 {
 	_melody = new SimpleMelody();
+	setTempo(DEFAULT_TEMPO);
 }
 
 bool MusicParser::setTempo(unsigned int tempo)
@@ -53,6 +54,7 @@ int MusicParser::length()
 
 unsigned int MusicParser::getFrequency()
 {
+	if(_melody->isRest()){return 0;}
 	return MelodyToSound::getFrequency(_melody->getNoteIndex());
 }
 
