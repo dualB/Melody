@@ -1,5 +1,5 @@
-#ifndef MusicScribe_h
-#define MusicScribe_h
+#ifndef MusicParser_h
+#define MusicParser_h
 
 #define SYMBOLE_DIESE '#'
 #define SYMBOLE_BEMOL '_'
@@ -22,12 +22,12 @@ struct Note
 /******************************************************************************
 * Definitions
 ******************************************************************************/
-class MusicScribe
+class MusicParser
 {
 
 public:
-	MusicScribe(char *str, Print *debug=nullptr);
-	MusicScribe(Stream *stream, Print *debug=nullptr);
+	MusicParser(char *str, Print *debug=nullptr);
+	MusicParser(Stream *stream, Print *debug=nullptr);
 
 	bool hasNext();
 	Note next();

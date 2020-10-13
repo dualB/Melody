@@ -1,4 +1,4 @@
-# Librairie TGP MusicScribe
+# Librairie TGP MusicParser
 
 Cette bibliotheque permet de jouer des notes sur un *buzzer* (avertisseur sonore) en spécifiant une suite de note selon la nomenclature suivante : "{octave}NOTE{altération}{durée}".
 
@@ -7,7 +7,7 @@ Cette librairie nécessite la librairie [TGP Del](https://github.com/TechnoPhysC
 ## Notation musicale
 
 ### Une partition
-On doit fournir au MusicScribe une partition musicale (chaîne de texte) qui est une suite de plusieurs notes. Dans la chaîne de texte, les notes successives peuvent être facultativement séparés par un ou des espaces pour plus de clarté.
+On doit fournir au MusicParser une partition musicale (chaîne de texte) qui est une suite de plusieurs notes. Dans la chaîne de texte, les notes successives peuvent être facultativement séparés par un ou des espaces pour plus de clarté.
 
 Par exemple :
 
@@ -51,32 +51,32 @@ Chaque note doit avoir la nomenclature suivante  :
 ## Utilisation
 
 ```cpp
-#include <MusicScribe.h>
+#include <MusicParser.h>
 
 const uint8_t PIN_BUZZER = 12;
 
-MusicScribe MusicScribe(PIN_BUZZER);
+MusicParser MusicParser(PIN_BUZZER);
 
 
 void setup() {
 
-  MusicScribe.setPartition("c d e f g a +c");
+  MusicParser.setPartition("c d e f g a +c");
 
-  MusicScribe.setTempo(120);
-  MusicScribe.setLoundness(100);
+  MusicParser.setTempo(120);
+  MusicParser.setLoundness(100);
 
-  MusicScribe.play();
+  MusicParser.play();
 }
 
 void loop() {
-  MusicScribe.refresh();
+  MusicParser.refresh();
 }
 
 ```
 
 ## Constructeurs
 ```cpp
-MusicScribe(uint8_t pin);
+MusicParser(uint8_t pin);
 ```
 On spécifie la broche sur laquelle est connectée le *buzzer*.
 
@@ -84,7 +84,7 @@ On spécifie la broche sur laquelle est connectée le *buzzer*.
 ```cpp
  void refresh()
 ```
-Cette méthode doit être placée en début de boucle loop(): elle permet de mettre à jour l'état du MusicScribe sans bloquer l'exécution du reste de la boucle.
+Cette méthode doit être placée en début de boucle loop(): elle permet de mettre à jour l'état du MusicParser sans bloquer l'exécution du reste de la boucle.
 
 ---
 ```cpp
@@ -103,7 +103,7 @@ Cette méthode permet d'arrêter la musique.
 void setPlaying(bool value)
 bool isPlaying()
 ```
-Cette méthode permet de lire et modifier l'état actif du MusicScribe (s'il joue ou non).
+Cette méthode permet de lire et modifier l'état actif du MusicParser (s'il joue ou non).
 setPlaying(true) a le même effet que play(). 
 setPlaying(false) a le même effet que stop(). 
 
@@ -112,7 +112,7 @@ setPlaying(false) a le même effet que stop().
 void setPause(bool value)
 bool getPause()
 ```
-Cette méthode permet de lire et modifier l'état de pause du MusicScribe. Lorsqu'il est en pause, l'état actif est toujours vrai (getPlaying() retourne TRUE), mais le MusicScribe est en attente avant de jouer la prochaine note.
+Cette méthode permet de lire et modifier l'état de pause du MusicParser. Lorsqu'il est en pause, l'état actif est toujours vrai (getPlaying() retourne TRUE), mais le MusicParser est en attente avant de jouer la prochaine note.
 
 ---
 ```cpp
@@ -133,4 +133,4 @@ Cette méthode permet de lire et modifier l'intensité sonore du *buzzer*. La va
 void setPartition(char *partition)
 char *getPartition()
 ```
-Cette méthode permet de lire et modifier la partition du MusicScribe, soit une chaîne de texte formaté selon la notation expliquée à la section 'Notation musicale'.
+Cette méthode permet de lire et modifier la partition du MusicParser, soit une chaîne de texte formaté selon la notation expliquée à la section 'Notation musicale'.

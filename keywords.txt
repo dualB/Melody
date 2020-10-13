@@ -1,11 +1,11 @@
 #######################################
-# Syntax Coloring Map for MusicScribe
+# Syntax Coloring Map for MusicParser
 #######################################
 
 #######################################
 # Datatypes (KEYWORD1)
 #######################################
-MusicScribe	KEYWORD1
+MusicParser	KEYWORD1
 
 #######################################
 # Methods and Functions (KEYWORD2)

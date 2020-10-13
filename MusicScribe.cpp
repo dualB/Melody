@@ -1,8 +1,8 @@
-#include "MusicScribe.h"
+#include "MusicParser.h"
 
 char _InComBuffer[2] = {};
 
-MusicScribe::MusicScribe(Stream *stream, Print *debug)
+MusicParser::MusicParser(Stream *stream, Print *debug)
 {
 	_stream = stream;
 	_debug = debug;
@@ -12,7 +12,7 @@ MusicScribe::MusicScribe(Stream *stream, Print *debug)
 	_current.frequency = 0;
 	_InComBuffer[1] = '\0';
 }
-MusicScribe::MusicScribe(char *str, Print *debug)
+MusicParser::MusicParser(char *str, Print *debug)
 {
 	_stream = new StreamOfString(str);
 	_debug = debug;
@@ -22,11 +22,11 @@ MusicScribe::MusicScribe(char *str, Print *debug)
 	_current.frequency = 0;
 	_InComBuffer[1] = '\0';
 }
-bool MusicScribe::hasNext()
+bool MusicParser::hasNext()
 {
 	return decode();
 }
-Note MusicScribe::next()
+Note MusicParser::next()
 {
 	_debug->print(_InComBuffer);
 	_debug->print(" : ");
@@ -35,7 +35,7 @@ Note MusicScribe::next()
 	_debug->println(_current.duration);
 	return _current;
 }
-bool MusicScribe::decode()
+bool MusicParser::decode()
 {
 	bool hasNote = false;
 	_silence = false;
@@ -152,7 +152,7 @@ bool MusicScribe::decode()
 	return hasNote;
 }
 
-unsigned int MusicScribe::getFrequency(int index)
+unsigned int MusicParser::getFrequency(int index)
 {
 	if (_silence)
 	{
