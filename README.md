@@ -1,21 +1,33 @@
-# Librairie TGP Melody
+# Librairie Melody
 
-Cette bibliotheque permet de jouer des notes sur un *buzzer* (avertisseur sonore) en spécifiant une suite de note selon la nomenclature suivante : "{octave}NOTE{altération}{durée}".
+Cette librairie instaure un système de notation simple mais complet afin d'écrire des mélodies (suite de notes musicales à une seule voix) dans le but de faciliter le pont entre la notation musicale et la génération du son.
 
-Cette librairie nécessite la librairie [TGP Del](https://github.com/TechnoPhysCAL/TGP_Del), puisque le contrôle d'un *buzzer* s'apparente beaucoup à celui d'une del.
+## Raison d'être de la librairie
+
+D'un côté, la notation musicale permet d'écrire une suite de notes, selon des standards connus depuis longtemps; on y utilise des lettres et des symboles afin de nommer les notes, spécifier des changements de rythmes ou des altérations (dièses, bémols), ou même des répétitions.
+
+De l'autre côté, la génération d'un son avec Arduino (habituellement à l'aide d'un buzzer), doit plutôt être exprimé par la fréquence du son (en Hz), sa durée (en millisecondes) et son intensité sonore (qui dépend du matériel utilisé).
+
+En tant que musicien, écrire de la musique pour Arduino, en terme de Hz et de millisecondes est définitivement un frein et alourdit l'écriture, tout en ne mettant pas à profit la notation musicale déjà très riche. La librairie Melody vient faire le pont entre les deux.
 
 ## Notation musicale
 
-### Une Score
+### Un Score
 On doit fournir au Melody un score musical (chaîne de texte) qui est une suite de plusieurs notes. Dans la chaîne de texte, les notes successives peuvent être facultativement séparés par un ou des espaces pour plus de clarté.
 
 Par exemple :
 
 ```cpp
- "cdefgabs" 
- "c d   e   fg ab s" 
+ "cdefgabr" 
+ "c d   e   fg ab r" 
 ```
 Ces scores donneront le même résultat.
+#### NOTE 
+- Valeurs possibles : C c D d E e F f G g A a B b R r
+- Explication : le nom des notes réelles (C== do, B==si) et le 'r' pour un silence. Une majuscule ou un minuscule sont tous les deux acceptables.
+
+
+----- à suivre.
 
 ### Une note
 
@@ -25,9 +37,6 @@ Chaque note doit avoir la nomenclature suivante  :
 
 { } => optionel
 
-#### NOTE 
-- Valeurs possibles : C c D d E e F f G g A a B b S s
-- Explication : le nom des notes réelles (C== do, B==si) et le 's' pour un silence. Une majuscule ou un minuscule ne fait pas de différence.
 
 #### OCTAVE
 - Valeurs possibles :2 3 4 5 6 7 + -
