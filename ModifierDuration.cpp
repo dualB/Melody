@@ -1,6 +1,6 @@
 #include "ModifierDuration.h"
 
-ModifierDuration::ModifierDuration(unsigned int numerator, unsigned int denominator,Melody *note): Modifier(note)
+ModifierDuration::ModifierDuration(unsigned int numerator, unsigned int denominator,Sequence *note): Modifier(note)
 {
     _numerator = numerator;
     _denominator = denominator;

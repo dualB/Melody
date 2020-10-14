@@ -1,5 +1,5 @@
-#ifndef MelodyParser_h
-#define MelodyParser_h
+#ifndef SequenceParser_h
+#define SequenceParser_h
 
 #define SYMBOL_SEMITONE_UP '#'
 #define SYMBOL_SEMITONE_DOWN ','
@@ -51,21 +51,23 @@
 #define SYMBOL_WHITESPACE_LINEFEED '\n'
 #define SYMBOL_WHITESPACE_CARRIAGE_RETURN '\r'
 #define SYMBOL_WHITESPACE_HORIZONTAL_TAB '\t'
+#define SYMBOL_WHITESPACE_HORIZONTAL_BAR '|'
 
-#include "Melody.h"
+
+#include "Sequence.h"
 #include "Modifier.h"
-
 #include "Stream.h"
+
 /******************************************************************************
 * Definitions
 ******************************************************************************/
-class MelodyParser
+class SequenceParser
 {
 
 public:
-    MelodyParser();
-    Melody *parse(Stream *);
-    Melody *parse(char *);
+    SequenceParser();
+    Sequence *parse(Stream *);
+    Sequence *parse(char *);
 
 protected:
 private:
@@ -78,20 +80,20 @@ private:
     bool isGroupEnd(char);
 
     Note *noteOf(char);
-    Melody *parseMelody(Stream *);
-    Melody *parseGroup(Stream *);
-    Melody *parseNote(Stream *);
-    Melody *parseModifier(Stream *, Melody *);
-    Melody *parseRepetition(Stream *, Melody *);
-    Melody *parseTuplet(Stream *, Melody *);
+    Sequence *parseSequence(Stream *);
+    Sequence *parseGroup(Stream *);
+    Sequence *parseNote(Stream *);
+    Sequence *parseModifier(Stream *, Sequence *);
+    Sequence *parseRepetition(Stream *, Sequence *);
+    Sequence *parseTuplet(Stream *, Sequence *);
 
     unsigned int parseInteger(Stream *);
     void parseWS(Stream *);
 
-    class StreamOfString : public Stream
+    class StreamOfCharArray : public Stream
     {
     public:
-        StreamOfString(char *str) : string(str), _cur(0), _length(0)
+        StreamOfCharArray(char *str) : string(str), _cur(0), _length(0)
         {
             for (int i = 0; str[i] != '\0'; i++)
             {

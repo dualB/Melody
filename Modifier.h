@@ -1,17 +1,17 @@
 #ifndef Modifier_h
 #define Modifier_h
 
-#include "Melody.h"
+#include "Sequence.h"
 /******************************************************************************
 * Definitions
 ******************************************************************************/
-class Modifier : public Melody
+class Modifier : public Sequence
 {
 
 public:
-	Modifier(Melody *melody = nullptr);
-	void set(Melody *);
-	Melody *get();
+	Modifier(Sequence *Sequence = nullptr);
+	void set(Sequence *);
+	Sequence *get();
 
 	bool hasNext() { return get()->hasNext(); };
 	void restart() { get()->restart(); }
@@ -26,7 +26,7 @@ public:
 
 protected:
 private:
-	Melody *_base;
+	Sequence *_base;
 };
 
 #endif

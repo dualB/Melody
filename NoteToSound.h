@@ -1,10 +1,10 @@
-#ifndef MelodyToSound_h
-#define MelodyToSound_h
+#ifndef NoteToSound_h
+#define NoteToSound_h
 
 /******************************************************************************
 * Definitions
 ******************************************************************************/
-class MelodyToSound
+class NoteToSound
 {
 
 public:
@@ -12,7 +12,7 @@ public:
     static unsigned long getDuration(unsigned long base_duration, unsigned int numerator, unsigned int denominator);
 
 private:
-    MelodyToSound(){};
+    NoteToSound(){};
 };
 
 #endif

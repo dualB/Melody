@@ -1,25 +1,25 @@
-#ifndef SingleNoteMelody_h
+#ifndef SingleNoteSequence_h
+#define SingleNoteSequence_h
 
-#define SingleNoteMelody_h
-
-#include "Melody.h"
+#include "Sequence.h"
 #include "Note.h"
 /******************************************************************************
 * Definitions
 ******************************************************************************/
 
-class SingleNoteMelody : public Melody
+class SingleNoteSequence : public Sequence
 {
 
 public:
-	SingleNoteMelody(Note *);
-	~SingleNoteMelody();
+	SingleNoteSequence(Note *);
+	~SingleNoteSequence();
 
 	bool hasNext();
 	void restart();
 	void next();
-	int length() ;
-	
+	int length();
+
+
 	int getNoteIndex();
 	bool isRest();
 	unsigned int getDurationNumerator();
@@ -29,7 +29,6 @@ public:
 public:
 	Note *_note;
 	bool _hasNext;
-
 };
 
 #endif

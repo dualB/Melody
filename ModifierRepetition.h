@@ -9,7 +9,7 @@ class ModifierRepetition : public Modifier
 {
 
 public:
-	ModifierRepetition(unsigned int, Melody *note = nullptr);
+	ModifierRepetition(unsigned int, Sequence *note = nullptr);
 	 bool hasNext();
 	 void restart();
 	 void next();

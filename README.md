@@ -1,4 +1,4 @@
-# Librairie TGP MusicParser
+# Librairie TGP Melody
 
 Cette bibliotheque permet de jouer des notes sur un *buzzer* (avertisseur sonore) en spécifiant une suite de note selon la nomenclature suivante : "{octave}NOTE{altération}{durée}".
 
@@ -6,8 +6,8 @@ Cette librairie nécessite la librairie [TGP Del](https://github.com/TechnoPhysC
 
 ## Notation musicale
 
-### Une partition
-On doit fournir au MusicParser une partition musicale (chaîne de texte) qui est une suite de plusieurs notes. Dans la chaîne de texte, les notes successives peuvent être facultativement séparés par un ou des espaces pour plus de clarté.
+### Une Score
+On doit fournir au Melody un score musical (chaîne de texte) qui est une suite de plusieurs notes. Dans la chaîne de texte, les notes successives peuvent être facultativement séparés par un ou des espaces pour plus de clarté.
 
 Par exemple :
 
@@ -15,7 +15,7 @@ Par exemple :
  "cdefgabs" 
  "c d   e   fg ab s" 
 ```
-Ces partitions donneront le même résultat.
+Ces scores donneront le même résultat.
 
 ### Une note
 
@@ -51,32 +51,32 @@ Chaque note doit avoir la nomenclature suivante  :
 ## Utilisation
 
 ```cpp
-#include <MusicParser.h>
+#include <Melody.h>
 
 const uint8_t PIN_BUZZER = 12;
 
-MusicParser MusicParser(PIN_BUZZER);
+Melody Melody(PIN_BUZZER);
 
 
 void setup() {
 
-  MusicParser.setPartition("c d e f g a +c");
+  Melody.setScore("c d e f g a +c");
 
-  MusicParser.setTempo(120);
-  MusicParser.setLoundness(100);
+  Melody.setTempo(120);
+  Melody.setLoundness(100);
 
-  MusicParser.play();
+  Melody.play();
 }
 
 void loop() {
-  MusicParser.refresh();
+  Melody.refresh();
 }
 
 ```
 
 ## Constructeurs
 ```cpp
-MusicParser(uint8_t pin);
+Melody(uint8_t pin);
 ```
 On spécifie la broche sur laquelle est connectée le *buzzer*.
 
@@ -84,7 +84,7 @@ On spécifie la broche sur laquelle est connectée le *buzzer*.
 ```cpp
  void refresh()
 ```
-Cette méthode doit être placée en début de boucle loop(): elle permet de mettre à jour l'état du MusicParser sans bloquer l'exécution du reste de la boucle.
+Cette méthode doit être placée en début de boucle loop(): elle permet de mettre à jour l'état du Melody sans bloquer l'exécution du reste de la boucle.
 
 ---
 ```cpp
@@ -103,7 +103,7 @@ Cette méthode permet d'arrêter la musique.
 void setPlaying(bool value)
 bool isPlaying()
 ```
-Cette méthode permet de lire et modifier l'état actif du MusicParser (s'il joue ou non).
+Cette méthode permet de lire et modifier l'état actif du Melody (s'il joue ou non).
 setPlaying(true) a le même effet que play(). 
 setPlaying(false) a le même effet que stop(). 
 
@@ -112,7 +112,7 @@ setPlaying(false) a le même effet que stop().
 void setPause(bool value)
 bool getPause()
 ```
-Cette méthode permet de lire et modifier l'état de pause du MusicParser. Lorsqu'il est en pause, l'état actif est toujours vrai (getPlaying() retourne TRUE), mais le MusicParser est en attente avant de jouer la prochaine note.
+Cette méthode permet de lire et modifier l'état de pause du Melody. Lorsqu'il est en pause, l'état actif est toujours vrai (getPlaying() retourne TRUE), mais le Melody est en attente avant de jouer la prochaine note.
 
 ---
 ```cpp
@@ -130,7 +130,7 @@ Cette méthode permet de lire et modifier l'intensité sonore du *buzzer*. La va
 
 ---
 ```cpp
-void setPartition(char *partition)
-char *getPartition()
+void setScore(char *score)
+char *getScore()
 ```
-Cette méthode permet de lire et modifier la partition du MusicParser, soit une chaîne de texte formaté selon la notation expliquée à la section 'Notation musicale'.
+Cette méthode permet de lire et modifier le score du Melody, soit une chaîne de texte formaté selon la notation expliquée à la section 'Notation musicale'.

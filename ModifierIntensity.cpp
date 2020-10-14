@@ -1,6 +1,6 @@
 #include "ModifierIntensity.h"
 
-ModifierIntensity::ModifierIntensity( int deltaIntensity,Melody *note): Modifier(note)
+ModifierIntensity::ModifierIntensity( int deltaIntensity,Sequence *note): Modifier(note)
 {
 
     _deltaIntensity = deltaIntensity;

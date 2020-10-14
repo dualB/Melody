@@ -9,7 +9,7 @@ class ModifierIndex : public Modifier
 {
 
 public:
-	ModifierIndex(int deltaIndex,Melody * note=nullptr);
+	ModifierIndex(int deltaIndex,Sequence * note=nullptr);
 	int getNoteIndex();
 
 protected:

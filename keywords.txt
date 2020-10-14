@@ -1,16 +1,21 @@
 #######################################
-# Syntax Coloring Map for MusicParser
+# Syntax Coloring Map for Melody
 #######################################
 
 #######################################
 # Datatypes (KEYWORD1)
 #######################################
-MusicParser	KEYWORD1
+Melody	KEYWORD1
 
 #######################################
 # Methods and Functions (KEYWORD2)
 #######################################
-
+length  KEYWORD2
+hasNext  KEYWORD2
+next  KEYWORD2
+getFrequency  KEYWORD2
+getLoudness  KEYWORD2
+getDuration  KEYWORD2
 
 #######################################
 # Constants (LITERAL1)

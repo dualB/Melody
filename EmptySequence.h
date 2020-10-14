@@ -1,19 +1,19 @@
-#ifndef EmptyMelody_h
-#define EmptyMelody_h
+#ifndef EmptySequence_h
+#define EmptySequence_h
 
-#include "Melody.h"
+#include "Sequence.h"
 #include "Note.h"
 
 /******************************************************************************
 * Definitions
 ******************************************************************************/
 
-class EmptyMelody : public Melody
+class EmptySequence : public Sequence
 {
 
 public:
-	EmptyMelody();
-	~EmptyMelody();
+	EmptySequence();
+	~EmptySequence();
 	
 	bool hasNext();
 	void restart();

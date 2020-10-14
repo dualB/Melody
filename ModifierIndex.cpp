@@ -1,6 +1,6 @@
 #include "ModifierIndex.h"
 
-ModifierIndex::ModifierIndex(int deltaIndex,Melody *note): Modifier(note)
+ModifierIndex::ModifierIndex(int deltaIndex,Sequence *note): Modifier(note)
 {
     _deltaIndex = deltaIndex;
 }

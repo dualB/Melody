@@ -9,7 +9,7 @@ class ModifierDuration : public Modifier
 {
 
 public:
-	ModifierDuration(unsigned int numerator, unsigned int denominator, Melody *note = nullptr);
+	ModifierDuration(unsigned int numerator, unsigned int denominator, Sequence *note = nullptr);
 
 	unsigned int getDurationNumerator();
 	unsigned int getDurationDenominator();

@@ -1,56 +1,7 @@
-#include "MelodyToArray.h"
+#include "NoteToSound.h"
 
-MelodyToArray::MelodyToArray()
+unsigned long NoteToSound::getDuration(unsigned long base_duration, unsigned int numerator, unsigned int denominator)
 {
-}
-
-Sound *MelodyToArray::convert(Melody *melody, unsigned int tempo, HardwareSerial *printer)
-{
-    if (melody->length() <= 0 || tempo == 0)
-    {
-        return new Sound[0];
-    }
-    Sound *sounds = new Sound[melody->length()];
-    int i = 0;
-    unsigned long base_duration = (60000 / (tempo > 0 ? tempo : 1));
-    printer->print("base_duration ");
-    printer->println(base_duration);
-    melody->restart();
-    while (melody->hasNext())
-    {
-        printer->print("noteIndex ");
-        printer->println(melody->getNoteIndex());
-        printer->print("freq ");
-        printer->println(getFrequency(melody->getNoteIndex()));
-        sounds[i].frequency = getFrequency(melody->getNoteIndex());
-        printer->print("duration ");
-        printer->println(getDuration(base_duration, melody->getDurationNumerator(), melody->getDurationDenominator(), printer));
-        sounds[i].duration = getDuration(base_duration, melody->getDurationNumerator(), melody->getDurationDenominator(), printer);
-        sounds[i].loundness = melody->getIntensityIndex();
-        i++;
-        melody->next();
-    }
-    for (int j = 0; j < melody->length(); j++)
-    {
-        MelodyToArray::log(sounds[j],printer);
-    }
-}
-
-void MelodyToArray::log(Sound sound, HardwareSerial *printer)
-{
-    printer->print(sound.frequency);
-    printer->print(", ");
-    printer->print(sound.duration);
-    printer->print(", ");
-    printer->println(sound.loundness);
-}
-
-unsigned long MelodyToArray::getDuration(unsigned long base_duration, unsigned int numerator, unsigned int denominator, HardwareSerial *printer)
-{
-    printer->print("numerator ");
-    printer->println(numerator);
-    printer->print("denominator ");
-    printer->println(denominator);
     if (denominator == 0)
     {
         return 0;
@@ -58,7 +9,7 @@ unsigned long MelodyToArray::getDuration(unsigned long base_duration, unsigned i
     return base_duration * numerator / denominator;
 }
 
-unsigned int MelodyToArray::getFrequency(int index)
+unsigned int NoteToSound::getFrequency(int index)
 {
 
     const unsigned int frequenceDeBaseNote[] = {

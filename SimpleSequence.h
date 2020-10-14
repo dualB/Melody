@@ -1,8 +1,8 @@
-#ifndef SimpleMelody_h
-#define SimpleMelody_h
+#ifndef SimpleSequence_h
+#define SimpleSequence_h
 
-#include "Melody.h"
-#include "EmptyMelody.h"
+#include "Sequence.h"
+#include "EmptySequence.h"
 #include "Note.h"
 
 /******************************************************************************
@@ -10,17 +10,17 @@
 ******************************************************************************/
 struct Node
 {
-	Melody *melody;
+	Sequence *Sequence;
 	struct Node *next;
 };
 
-class SimpleMelody : public Melody
+class SimpleSequence : public Sequence
 {
 
 public:
-	SimpleMelody();
-	~SimpleMelody();
-	void addMelody(Melody *);
+	SimpleSequence();
+	~SimpleSequence();
+	void addSequence(Sequence *);
 
 	bool hasNext();
 	void restart();
@@ -36,7 +36,6 @@ public:
 private:
 	Node *_head;
 	Node *_cursor;
-
 };
 
 #endif
