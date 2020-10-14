@@ -17,6 +17,7 @@ void EmptySequence::restart()
 }
 void EmptySequence::next()
 {
+    
 }
 
 int EmptySequence::length()

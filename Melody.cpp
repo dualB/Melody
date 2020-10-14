@@ -2,9 +2,22 @@
 
 Melody::Melody()
 {
-	_Sequence = new SimpleSequence();
+	setScore("");
 	setTempo(DEFAULT_TEMPO);
-	_index = -1;
+	restart();
+}
+
+Melody::Melody(char *score)
+{
+	setScore(score);
+	setTempo(DEFAULT_TEMPO);
+	restart();
+}
+Melody::Melody(char *score,unsigned int tempo)
+{
+	setScore(score);
+	setTempo(tempo);
+	restart();
 }
 
 bool Melody::setTempo(unsigned int tempo)

@@ -3,7 +3,7 @@
 SimpleSequence::SimpleSequence()
 {
     _head = new Node();
-    _head->Sequence = new EmptySequence();
+    _head->sequence = new EmptySequence();
     _head->next = nullptr;
     _cursor = _head;
 }
@@ -16,7 +16,7 @@ SimpleSequence::~SimpleSequence()
     { // iterate over all elements
         Node *deleteMe = next;
         next = next->next; // save pointer to the next element
-        delete deleteMe->Sequence;
+        delete deleteMe->sequence;
         delete deleteMe; // delete the current entry
     }
 }
@@ -24,7 +24,7 @@ SimpleSequence::~SimpleSequence()
 void SimpleSequence::addSequence(Sequence *Sequence)
 {
     Node *n = new Node();
-    n->Sequence = Sequence;
+    n->sequence = Sequence;
     n->next = nullptr;
 
     Node *_cur = _head;
@@ -39,14 +39,14 @@ void SimpleSequence::addSequence(Sequence *Sequence)
 }
 bool SimpleSequence::hasNext()
 {
-    return _cursor->Sequence->hasNext() || _cursor->next != nullptr;
+    return _cursor->sequence->hasNext() || _cursor->next != nullptr;
 }
 void SimpleSequence::restart()
 {
     Node *n = _head;
     while (n != nullptr)
     {
-        n->Sequence->restart();
+        n->sequence->restart();
         n = n->next;
     }
     _cursor = _head;
@@ -55,16 +55,16 @@ void SimpleSequence::restart()
 void SimpleSequence::next()
 {
 
-    if (_cursor->Sequence->hasNext())
+    if (_cursor->sequence->hasNext())
     {
-        _cursor->Sequence->next();
+        _cursor->sequence->next();
     }
     else
     {
         if (_cursor->next != nullptr)
         {
             _cursor = _cursor->next;
-            _cursor->Sequence->next();
+            _cursor->sequence->next();
         }
     }
 }
@@ -75,7 +75,7 @@ int SimpleSequence::length()
     Node *c = _head;
     while (c != nullptr)
     {
-        total += c->Sequence->length();
+        total += c->sequence->length();
         c = c->next;
     }
     return total;
@@ -83,21 +83,21 @@ int SimpleSequence::length()
 
 int SimpleSequence::getNoteIndex()
 {
-    return _cursor->Sequence->getNoteIndex();
+    return _cursor->sequence->getNoteIndex();
 }
 bool SimpleSequence::isRest()
 {
-    return _cursor->Sequence->isRest();
+    return _cursor->sequence->isRest();
 }
 unsigned int SimpleSequence::getDurationNumerator()
 {
-    return _cursor->Sequence->getDurationNumerator();
+    return _cursor->sequence->getDurationNumerator();
 }
 unsigned int SimpleSequence::getDurationDenominator()
 {
-    return _cursor->Sequence->getDurationDenominator();
+    return _cursor->sequence->getDurationDenominator();
 }
 int SimpleSequence::getIntensityIndex()
 {
-    return _cursor->Sequence->getIntensityIndex();
+    return _cursor->sequence->getIntensityIndex();
 }

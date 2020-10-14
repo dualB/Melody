@@ -16,6 +16,8 @@ class Melody
 
 public:
 	Melody();
+	Melody(char *);
+	Melody(char *,unsigned int);
 	bool setTempo(unsigned int);
 	unsigned int getTempo();
 	bool setScore(char *);

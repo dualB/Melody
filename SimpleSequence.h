@@ -10,7 +10,7 @@
 ******************************************************************************/
 struct Node
 {
-	Sequence *Sequence;
+	Sequence *sequence;
 	struct Node *next;
 };
 
