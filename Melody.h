@@ -1,7 +1,7 @@
 #ifndef Melody_h
 #define Melody_h
 
-#include "Arduino.h"
+
 #include "Sequence.h"
 #include "SequenceParser.h"
 #include "SimpleSequence.h"
