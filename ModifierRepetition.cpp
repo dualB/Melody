@@ -24,6 +24,7 @@ void ModifierRepetition::next()
     else if (_count < _times)
     {
         get()->restart();
+        get()->next();
         _count++;
     }
     else
