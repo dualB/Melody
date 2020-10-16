@@ -31,27 +31,15 @@ La mélodie est la forme de base de la notation. Elle est formée d'une suite de
 
 Une note est représenté par une lettre (majuscule ou minuscule), selon la nomenclature standard C (do), D (ré), E (mi) F (fa), G (sol), A (la), B (si). On ajoute également la lettre R (rest) pour les silences. Par défaut, les notes sont celles de la 4e octave, où la note LA est de fréquence 440 Hz; elles ont toutes une durée relative de 1.
 
+![Note](note.svg)
+
 #### Exemples
 
 - "c d r" est équivalent à "C D R"
 
-
-![Mélodie](sequence.svg)
-
-#### Exemples
-
-- "cdefgab"
-- "c d e f  g a b"
-- "c_ c c*"
-- "c\* d\* e\* f\*" est équivalent à "(cdef)\*"
-
-
 ### Group
 
 Un groupe permet facilement d'appliquer un modifieur à toute une mélodie d'un seul coup, afin d'alléger l'écriture. Un groupe est délimité par une paire de parenthèses.
-
-
-
 
 ![Group](group.svg)
 
