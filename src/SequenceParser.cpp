@@ -58,7 +58,6 @@ Sequence *SequenceParser::parseSequence(Stream *stream)
         }
         else if (isGroupBegin(stream->peek()))
         {
-
             Sequence->addSequence(parseGroup(stream));
         }
         else
@@ -81,7 +80,7 @@ void SequenceParser::parseWS(Stream *stream)
 Sequence *SequenceParser::parseGroup(Stream *stream)
 {
     stream->read(); // Should be '('
-    Sequence *Sequence = parseSequence(stream);
+    Sequence *sequence = parseSequence(stream);
     parseWS(stream);
     if (isGroupEnd(stream->peek()))
     {
@@ -90,16 +89,16 @@ Sequence *SequenceParser::parseGroup(Stream *stream)
     }
     else
     {
-        return Sequence; //problem..
+        return sequence; //problem..
     }
     parseWS(stream);
     if (isModifier(stream->peek()))
     {
-        return parseModifier(stream, Sequence);
+        return parseModifier(stream, sequence);
     }
     else
     {
-        return Sequence;
+        return sequence;
     }
 }
 
