@@ -11,9 +11,7 @@
    inkscape:version="1.0 (4035a4fb49, 2020-05-01)"
    id="svg8"
    version="1.1"
-   viewBox="0 0 47.625 18.520834"
-   height="18.520834mm"
-   width="47.625mm">
+   viewBox="0 0 47.625 18.520834">
   <defs
      id="defs2">
     <inkscape:path-effect
@@ -72,94 +70,6 @@
        id="path-effect1652"
        effect="bspline" />
     <inkscape:path-effect
-       effect="bspline"
-       id="path-effect1648"
-       is_visible="true"
-       lpeversion="1"
-       weight="33.333333"
-       steps="2"
-       helper_size="0"
-       apply_no_weight="true"
-       apply_with_weight="true"
-       only_selected="false" />
-    <inkscape:path-effect
-       effect="bspline"
-       id="path-effect1639"
-       is_visible="true"
-       lpeversion="1"
-       weight="33.333333"
-       steps="2"
-       helper_size="0"
-       apply_no_weight="true"
-       apply_with_weight="true"
-       only_selected="false" />
-    <inkscape:path-effect
-       only_selected="false"
-       apply_with_weight="true"
-       apply_no_weight="true"
-       helper_size="0"
-       steps="2"
-       weight="33.333333"
-       lpeversion="1"
-       is_visible="true"
-       id="path-effect1620"
-       effect="bspline" />
-    <inkscape:path-effect
-       effect="bspline"
-       id="path-effect1616"
-       is_visible="true"
-       lpeversion="1"
-       weight="33.333333"
-       steps="2"
-       helper_size="0"
-       apply_no_weight="true"
-       apply_with_weight="true"
-       only_selected="false" />
-    <inkscape:path-effect
-       effect="bspline"
-       id="path-effect1607"
-       is_visible="true"
-       lpeversion="1"
-       weight="33.333333"
-       steps="2"
-       helper_size="0"
-       apply_no_weight="true"
-       apply_with_weight="true"
-       only_selected="false" />
-    <inkscape:path-effect
-       only_selected="false"
-       apply_with_weight="true"
-       apply_no_weight="true"
-       helper_size="0"
-       steps="2"
-       weight="33.333333"
-       lpeversion="1"
-       is_visible="true"
-       id="path-effect1588"
-       effect="bspline" />
-    <inkscape:path-effect
-       only_selected="false"
-       apply_with_weight="true"
-       apply_no_weight="true"
-       helper_size="0"
-       steps="2"
-       weight="33.333333"
-       lpeversion="1"
-       is_visible="true"
-       id="path-effect1549"
-       effect="bspline" />
-    <inkscape:path-effect
-       effect="bspline"
-       id="path-effect1541"
-       is_visible="true"
-       lpeversion="1"
-       weight="33.333333"
-       steps="2"
-       helper_size="0"
-       apply_no_weight="true"
-       apply_with_weight="true"
-       only_selected="false" />
-    <inkscape:path-effect
        only_selected="false"
        apply_with_weight="true"
        apply_no_weight="true"
@@ -169,17 +79,6 @@
        lpeversion="1"
        is_visible="true"
        id="path-effect1463"
-       effect="bspline" />
-    <inkscape:path-effect
-       only_selected="false"
-       apply_with_weight="true"
-       apply_no_weight="true"
-       helper_size="0"
-       steps="2"
-       weight="33.333333"
-       lpeversion="1"
-       is_visible="true"
-       id="path-effect1459"
        effect="bspline" />
     <marker
        inkscape:isstock="true"
@@ -195,132 +94,6 @@
          d="M 5.77,0 -2.88,5 V -5 Z"
          id="path979" />
     </marker>
-    <clipPath
-       id="clipPath1682"
-       clipPathUnits="userSpaceOnUse">
-      <g
-         id="use1684"
-         inkscape:label="Clip">
-        <circle
-           style="opacity:0.999;fill:#ffffff;fill-opacity:1;stroke:#151515;stroke-width:0.25;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
-           id="circle896"
-           cx="-2.6458333"
-           cy="27.78125"
-           r="1.3229166" />
-        <text
-           xml:space="preserve"
-           style="font-style:normal;font-weight:normal;font-size:10.5833px;line-height:1.25;font-family:sans-serif;letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none;stroke-width:0.264583"
-           x="-1.3229166"
-           y="26.458332"
-           id="text900"><tspan
-             sodipodi:role="line"
-             id="tspan898"
-             x="-1.3229166"
-             y="26.458332"
-             style="font-size:2.11667px;stroke-width:0.264583">space</tspan></text>
-      </g>
-    </clipPath>
-    <clipPath
-       clipPathUnits="userSpaceOnUse"
-       id="clipPath1682-7">
-      <g
-         inkscape:label="Clip"
-         id="use1684-8">
-        <circle
-           r="1.3229166"
-           cy="27.78125"
-           cx="-2.6458333"
-           id="circle904"
-           style="opacity:0.999;fill:#ffffff;fill-opacity:1;stroke:#151515;stroke-width:0.25;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1" />
-        <text
-           id="text908"
-           y="26.458332"
-           x="-1.3229166"
-           style="font-style:normal;font-weight:normal;font-size:10.5833px;line-height:1.25;font-family:sans-serif;letter-spacing:0px;word-spacing:0px;white-space:pre;inline-size:0;fill:#000000;fill-opacity:1;stroke:none;stroke-width:0.264583"
-           xml:space="preserve"><tspan
-             style="font-size:2.11667px;stroke-width:0.264583"
-             y="26.458332"
-             x="-1.3229166"
-             id="tspan906">linefeed</tspan></text>
-      </g>
-    </clipPath>
-    <clipPath
-       clipPathUnits="userSpaceOnUse"
-       id="clipPath1682-9">
-      <g
-         inkscape:label="Clip"
-         id="use1684-4">
-        <circle
-           r="1.3229166"
-           cy="27.78125"
-           cx="-2.6458333"
-           id="circle912"
-           style="opacity:0.999;fill:#ffffff;fill-opacity:1;stroke:#151515;stroke-width:0.25;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1" />
-        <text
-           id="text916"
-           y="26.458332"
-           x="-1.3229166"
-           style="font-style:normal;font-weight:normal;font-size:10.5833px;line-height:1.25;font-family:sans-serif;letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none;stroke-width:0.264583"
-           xml:space="preserve"><tspan
-             style="font-size:2.11667px;stroke-width:0.264583"
-             y="26.458332"
-             x="-1.3229166"
-             id="tspan914"
-             sodipodi:role="line">carriage return</tspan></text>
-      </g>
-    </clipPath>
-    <clipPath
-       id="clipPath1682-9-3"
-       clipPathUnits="userSpaceOnUse">
-      <g
-         id="use1684-4-7"
-         inkscape:label="Clip">
-        <circle
-           style="opacity:0.999;fill:#ffffff;fill-opacity:1;stroke:#151515;stroke-width:0.25;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
-           id="circle1973"
-           cx="-2.6458333"
-           cy="27.78125"
-           r="1.3229166" />
-        <text
-           xml:space="preserve"
-           style="font-style:normal;font-weight:normal;font-size:10.5833px;line-height:1.25;font-family:sans-serif;letter-spacing:0px;word-spacing:0px;white-space:pre;inline-size:0;fill:#000000;fill-opacity:1;stroke:none;stroke-width:0.264583"
-           x="-1.3229166"
-           y="26.458332"
-           id="text1977"><tspan
-             id="tspan1975"
-             x="-1.3229166"
-             y="26.458332"
-             style="font-size:2.11667px;stroke-width:0.264583">horizontal tab</tspan></text>
-        <circle
-           r="1.3229166"
-           cy="32.978424"
-           cx="-2.504092"
-           id="circle1979"
-           style="opacity:0.999;fill:#ffffff;fill-opacity:1;stroke:#151515;stroke-width:0.25;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1" />
-        <text
-           transform="translate(0.14174109,5.1971726)"
-           id="text1983"
-           y="26.458332"
-           x="-1.3229166"
-           style="font-style:normal;font-weight:normal;font-size:10.5833px;line-height:1.25;font-family:sans-serif;letter-spacing:0px;word-spacing:0px;white-space:pre;inline-size:0;fill:#000000;fill-opacity:1;stroke:none;stroke-width:0.264583"
-           xml:space="preserve"><tspan
-             style="font-size:2.11667px;stroke-width:0.264583"
-             y="26.458332"
-             x="-1.3229166"
-             id="tspan1981">vertical bar</tspan></text>
-        <text
-           id="text1987"
-           y="33.611534"
-           x="-2.9954612"
-           style="font-style:normal;font-weight:normal;font-size:10.5833px;line-height:1.25;font-family:sans-serif;letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none;stroke-width:0.264583"
-           xml:space="preserve"><tspan
-             style="font-size:2.11667px;stroke-width:0.264583"
-             y="33.611534"
-             x="-2.9954612"
-             id="tspan1985"
-             sodipodi:role="line">|</tspan></text>
-      </g>
-    </clipPath>
   </defs>
   <sodipodi:namedview
      fit-margin-bottom="0"
@@ -337,9 +110,9 @@
      inkscape:document-rotation="0"
      inkscape:current-layer="layer1"
      inkscape:document-units="mm"
-     inkscape:cy="45.755567"
-     inkscape:cx="108.15228"
-     inkscape:zoom="5.6"
+     inkscape:cy="9.010862"
+     inkscape:cx="27.134488"
+     inkscape:zoom="44.8"
      inkscape:pageshadow="2"
      inkscape:pageopacity="0.0"
      borderopacity="1.0"
@@ -361,7 +134,7 @@
         <dc:format>image/svg+xml</dc:format>
         <dc:type
            rdf:resource="http://purl.org/dc/dcmitype/StillImage" />
-        <dc:title></dc:title>
+        <dc:title />
       </cc:Work>
     </rdf:RDF>
   </metadata>
@@ -423,10 +196,10 @@
          style="font-style:normal;font-variant:normal;font-weight:bold;font-stretch:normal;font-size:2.11667px;font-family:sans-serif;-inkscape-font-specification:'sans-serif Bold';stroke-width:0.264583"
          sodipodi:role="line">space</tspan></text>
     <path
-       inkscape:original-d="m 3.9687507,22.489582 c 0.4412369,2.65e-4 0.8822092,2.65e-4 1.3229166,0 2.646e-4,0.441246 2.646e-4,0.882209 0,1.322917 0.00201,0.469004 2.646e-4,0.882209 0,1.322917 0.017761,0.453254 2.646e-4,0.882209 0,1.322916 0.4272434,0.02802 0.8822092,2.65e-4 1.3229167,0"
+       inkscape:original-d="m 3.9687507,22.489582 c 0.4419722,0.001 0.8822092,2.65e-4 1.3229166,0 2.646e-4,0.441246 2.646e-4,0.882209 0,1.322917 0.00201,0.469004 2.646e-4,0.882209 0,1.322917 0.017761,0.453254 2.646e-4,0.882209 0,1.322916 0.4272434,0.02802 0.8829445,0.001 1.3229167,0 0.4628152,0.001 0.924612,0.001 1.385418,0"
        inkscape:path-effect="#path-effect1783"
        id="path1781"
-       d="m 3.9687507,22.489582 c 0.4412369,0 0.8822092,0 1.1025629,0.220623 0.2203537,0.220623 0.2203537,0.661586 0.2203537,1.116442 0,0.454856 0,0.868061 0,1.315042 0,0.446981 0,0.875936 0.2136217,1.096289 0.2136217,0.220354 0.6685875,0.220354 1.109295,0.220354"
+       d="m 3.9687507,22.489582 c 0.4419722,0 0.8822092,0 1.1025629,0.220623 0.2203537,0.220623 0.2203537,0.661586 0.2203537,1.116442 0,0.454856 0,0.868061 0,1.315042 0,0.446981 0,0.875936 0.2136217,1.096289 0.2136217,0.220354 0.6693228,0.220354 1.1207165,0.220354 0.4513937,0 0.9131905,0 1.3739965,0"
        style="fill:none;stroke:#000000;stroke-width:0.264583px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1" />
     <path
        inkscape:original-d="m 5.2916673,25.135416 c 2.646e-4,1.323181 2.646e-4,2.646098 0,3.96875 2.646e-4,0.441245 2.646e-4,0.882209 0,1.322916 0.4412456,2.65e-4 0.8822092,2.65e-4 1.3229167,0 4.410074,2.65e-4 8.81971,2.65e-4 13.229165,0 0.441246,2.65e-4 0.882211,2.65e-4 1.322917,0 -0.01373,-0.491705 2.65e-4,-0.88168 0,-1.322916 2.65e-4,-1.322679 2.65e-4,-2.645569 0,-3.96875"

@@ -10,48 +10,102 @@ De l'autre côté, la génération d'un son avec Arduino (habituellement à l'ai
 
 En tant que musicien, écrire de la musique pour Arduino, en terme de Hz et de millisecondes est définitivement un frein et alourdit l'écriture, tout en ne mettant pas à profit la notation musicale déjà très riche. La librairie Melody vient faire le pont entre les deux.
 
-## Notation musicale
+## La notation MELO
 
-###Sequence
+La notation MELO (pour Melody) est un format textuel qui permet l'écriture simplifié d'une mélodie à une voix. Cette notation s'inspire notamment de la notation musicale standard.
 
-![Sequence](sequence.svg)
+### Mélodie
 
-###Group
+La mélodie est la forme de base de la notation. Elle est formée d'une suite de note ou de groupe de notes, suivi de modificateur. On peut espacer ou non ces suites de notes ou groupes. Chaque modifieur viendra modifier la note ou le groupe de notes qui le précède.
+
+![Mélodie](sequence.svg)
+
+#### Exemples
+
+- "cdefgab"
+- "c d e f  g a b"
+- "c_ c c*"
+- "c\* d\* e\* f\*" est équivalent à "(cdef)\*"
+
+### Note
+
+Une note est représenté par une lettre (majuscule ou minuscule), selon la nomenclature standard C (do), D (ré), E (mi) F (fa), G (sol), A (la), B (si). On ajoute également la lettre R (rest) pour les silences. Par défaut, les notes sont celles de la 4e octave, où la note LA est de fréquence 440 Hz; elles ont toutes une durée relative de 1.
+
+#### Exemples
+
+- "c d r" est équivalent à "C D R"
+
+
+![Mélodie](sequence.svg)
+
+#### Exemples
+
+- "cdefgab"
+- "c d e f  g a b"
+- "c_ c c*"
+- "c\* d\* e\* f\*" est équivalent à "(cdef)\*"
+
+
+### Group
+
+Un groupe permet facilement d'appliquer un modifieur à toute une mélodie d'un seul coup, afin d'alléger l'écriture. Un groupe est délimité par une paire de parenthèses.
+
+
+
 
 ![Group](group.svg)
 
-###Modifier
+### Modifier
+
+Un modifieur est une suite d'altération qui permet de modifier la hauteur, la durée, le nombre de répétition ou l'intensité sonore d'une note ou d'un groupe de notes. On peut spécifier plusieurs modifieurs de suite; ils ont la propriétés d'être commutatif, c'est-à-dire que l'ordre dans lequel on les écrit n'aura pas d'importance.
 
 ![Modifier](modifier.svg)
 
-###Pitch
+#### Exemples
+- c+
+- c+.
+- d*
+- d,
+- d**
+- d
+
+### Pitch
+
+Un modifieur de hauteur du son permet d'augmenter ou d'abaisser une note d'un demi-ton ou d'un octave.
 
 ![Pitch](pitch.svg)
 
-###Duration
+### Duration
+
+Un modifieur de durée permet de multiplier la durée d'une note par un facteur simple (2, ½ ou ¾); il permet aussi de spécifier plus précisément n'importe quel type de pondération du temps (par exemple, pour les triolets). Par défaut, les notes ont toutes une durée de 1.
 
 ![Duration](duration.svg)
 
-###Repetition
+### Repetition
+
+Un modifieur de répétition permet de spécifier un nombre de répétition consécutifs pour la note ou le groupe de notes concernés.
 
 ![Repetition](repetition.svg)
 
+### Loudness
 
-###Loudness
+Un modifieur d'intensité sonore permet d'augmenter ou de diminuer la force du son. Une note a, par défaut, une intensité de 0; on peut donc avec des valeurs positives ou négatives. Puisque l'intensité sonore réelle dépend du matériel utilisé, il est suggéré d'utiliser une échelle relative allant de -3 (ppp) à +3 (fff).
 
 ![Loudness](loudness.svg)
 
+### Integer
 
-###Integer
-
+Un nombre entier doit être strictement positif (ne peut pas valoir zéro).
 ![Integer](integer.svg)
 
-###Space
+### Space
+
+Les espaces permis incluent les caractères couramment utilisé comme espaceur; on y ajoute la barre verticale '|', car elle est souvent utilisée en notation musicale pour repérer les mesures et faciliter la lecture. Ces espaces sont facultatifs.
 
 ![Space](space.svg)
 
 
-### Un Score
+## Exemples
 On doit fournir au Melody un score musical (chaîne de texte) qui est une suite de plusieurs notes. Dans la chaîne de texte, les notes successives peuvent être facultativement séparés par un ou des espaces pour plus de clarté.
 
 Par exemple :
