@@ -12,6 +12,45 @@ En tant que musicien, écrire de la musique pour Arduino, en terme de Hz et de m
 
 ## Notation musicale
 
+###Sequence
+
+![Sequence](sequence.svg)
+
+###Group
+
+![Group](group.svg)
+
+###Modifier
+
+![Modifier](modifier.svg)
+
+###Pitch
+
+![Pitch](pitch.svg)
+
+###Duration
+
+![Duration](duration.svg)
+
+###Repetition
+
+![Repetition](repetition.svg)
+
+
+###Loudness
+
+![Loudness](loudness.svg)
+
+
+###Integer
+
+![Integer](integer.svg)
+
+###Space
+
+![Space](space.svg)
+
+
 ### Un Score
 On doit fournir au Melody un score musical (chaîne de texte) qui est une suite de plusieurs notes. Dans la chaîne de texte, les notes successives peuvent être facultativement séparés par un ou des espaces pour plus de clarté.
 
