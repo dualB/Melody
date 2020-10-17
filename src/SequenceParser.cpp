@@ -138,10 +138,10 @@ Sequence *SequenceParser::parseModifier(Stream *stream, Sequence *original)
             break;
         case SYMBOL_DURATION_DOUBLE:
         case SYMBOL_DURATION_HALF:
-        case SYMBOL_DURATION_THREE_QUARTER:
+        case SYMBOL_DURATION_THREE_HALF:
 
-            cur = new ModifierDuration(c == SYMBOL_DURATION_THREE_QUARTER ? 3 : c == SYMBOL_DURATION_DOUBLE ? 2 : 1,
-                                       c == SYMBOL_DURATION_THREE_QUARTER ? 2 : c == SYMBOL_DURATION_DOUBLE ? 1 : 2,
+            cur = new ModifierDuration(c == SYMBOL_DURATION_THREE_HALF ? 3 : c == SYMBOL_DURATION_DOUBLE ? 2 : 1,
+                                       c == SYMBOL_DURATION_THREE_HALF ? 2 : c == SYMBOL_DURATION_DOUBLE ? 1 : 2,
                                        cur);
             break;
         case SYMBOL_DYNAMICS_PIANO:
