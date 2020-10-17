@@ -132,10 +132,9 @@ Les espaces permis incluent les caractères couramment utilisé comme espaceur; 
 ```cpp
 #include <Melody.h>
 
-const uint8_t PIN_BUZZER = 12;
+#define PIN_BUZZER 12
 
-Melody melody(PIN_BUZZER);
-
+Melody melody();
 
 void setup() {
   melody.setScore("c d e f g a c*");  //May be changed whenever you want
@@ -144,7 +143,6 @@ void setup() {
 
 void loop() {
  
-
   melody.restart();
 
   while(melody.hasNext()){
@@ -154,13 +152,13 @@ void loop() {
     unsigned long duration = melody.getDuration();
     int loudness = melody.getLoudness();
 
-    freq > 0 ? tone(pin,freq,duration) : noTone();
+    freq > 0 ? tone(PIN_BUZZER,freq,duration) : noTone();
 
     // loudness could be use with a mapping, according to your buzzer or sound-producing hardware
     //For Example :
     /*
       { 
-        int realIntensity = map(loudness, -4, 4, 0, 1024);
+        int realIntensity = map(loudness, -4, 4, 0, 1023);
         myBuzzer.setIntensity(realIntensity);
       }
 
