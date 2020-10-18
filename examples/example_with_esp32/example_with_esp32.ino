@@ -18,7 +18,7 @@ Melody gammeLouder("c>>> d>> e>f g< a<< b<<< c*<<<<", 240);
 Melody auClairDeLaLune(" (cccde+dr  ceddc+.r cccde+dr ceddc+.r dddd a_+ a_ r d c (b a g+.r)_ cccde+dr ceddc+.r )*");
 
 // John Sebastian Bach, The Musical Offering Theme
-Melody musicalOffering(" (((ce,ga,b_)+rg(f#fee,.)+  dd,c (ba-g-)_ c f e,+d+c+))+", 240);
+Melody musicalOffering(" (((ce,ga,b_)+rg(f#fee,.)+  dd,c (ba-g-)_ c f e,+d+c+))>>+", 240);
 
 void setup()
 {
