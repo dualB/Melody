@@ -56,7 +56,7 @@
 
 #include "Sequence.h"
 #include "Modifier.h"
-#include "Stream.h"
+#include "Streamer.h"
 
 /******************************************************************************
 * Definitions
@@ -66,7 +66,7 @@ class SequenceParser
 
 public:
     SequenceParser();
-    Sequence *parse(Stream *);
+    Sequence *parse(Streamer *);
     Sequence *parse(char *);
 
 protected:
@@ -80,40 +80,16 @@ private:
     bool isGroupEnd(char);
 
     Note *noteOf(char);
-    Sequence *parseSequence(Stream *);
-    Sequence *parseGroup(Stream *);
-    Sequence *parseNote(Stream *);
-    Sequence *parseModifier(Stream *, Sequence *);
-    Sequence *parseRepetition(Stream *, Sequence *);
-    Sequence *parseTuplet(Stream *, Sequence *);
+    Sequence *parseSequence(Streamer *);
+    Sequence *parseGroup(Streamer *);
+    Sequence *parseNote(Streamer *);
+    Sequence *parseModifier(Streamer *, Sequence *);
+    Sequence *parseRepetition(Streamer *, Sequence *);
+    Sequence *parseTuplet(Streamer *, Sequence *);
 
-    unsigned int parseInteger(Stream *);
-    void parseWS(Stream *);
+    unsigned int parseInteger(Streamer *);
+    void parseWS(Streamer *);
 
-    class StreamOfCharArray : public Stream
-    {
-    public:
-        StreamOfCharArray(char *str) : string(str), _cur(0), _length(0)
-        {
-            for (int i = 0; str[i] != '\0'; i++)
-            {
-                _length++;
-            }
-        }
-        int available() { return _length - _cur; }
-        int read() { return _cur < _length ? string[_cur++] : -1; }
-        int peek() { return _cur < _length ? string[_cur] : -1; }
-        void flush(){};
-        size_t write(uint8_t c)
-        {
-            return 0;
-        };
-
-    private:
-        char *string;
-        unsigned int _cur;
-        unsigned int _length;
-    };
 };
 
 #endif

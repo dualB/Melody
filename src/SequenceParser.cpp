@@ -23,7 +23,7 @@ SequenceParser::SequenceParser()
 {
 }
 
-Sequence *SequenceParser::parse(Stream *stream)
+Sequence *SequenceParser::parse(Streamer *stream)
 {
 
     Sequence *Sequence = parseSequence(stream);
@@ -39,10 +39,10 @@ Sequence *SequenceParser::parse(Stream *stream)
 }
 Sequence *SequenceParser::parse(char *text)
 {
-    return parse(new StreamOfCharArray(text));
+    return parse(new Streamer(text));
 }
 
-Sequence *SequenceParser::parseSequence(Stream *stream)
+Sequence *SequenceParser::parseSequence(Streamer *stream)
 {
 
     SimpleSequence *Sequence = new SimpleSequence();
@@ -69,7 +69,7 @@ Sequence *SequenceParser::parseSequence(Stream *stream)
     return Sequence;
 }
 
-void SequenceParser::parseWS(Stream *stream)
+void SequenceParser::parseWS(Streamer *stream)
 {
     while (isWS(stream->peek()))
     {
@@ -77,7 +77,7 @@ void SequenceParser::parseWS(Stream *stream)
     }
 }
 
-Sequence *SequenceParser::parseGroup(Stream *stream)
+Sequence *SequenceParser::parseGroup(Streamer *stream)
 {
     stream->read(); // Should be '('
     Sequence *sequence = parseSequence(stream);
@@ -102,7 +102,7 @@ Sequence *SequenceParser::parseGroup(Stream *stream)
     }
 }
 
-Sequence *SequenceParser::parseNote(Stream *stream)
+Sequence *SequenceParser::parseNote(Streamer *stream)
 {
     SingleNoteSequence *snm = new SingleNoteSequence(noteOf(stream->read()));
 
@@ -117,7 +117,7 @@ Sequence *SequenceParser::parseNote(Stream *stream)
         return snm;
     }
 }
-Sequence *SequenceParser::parseModifier(Stream *stream, Sequence *original)
+Sequence *SequenceParser::parseModifier(Streamer *stream, Sequence *original)
 {
     Sequence *cur = original;
 
@@ -162,7 +162,7 @@ Sequence *SequenceParser::parseModifier(Stream *stream, Sequence *original)
     return cur;
 }
 
-Sequence *SequenceParser::parseTuplet(Stream *stream, Sequence *original)
+Sequence *SequenceParser::parseTuplet(Streamer *stream, Sequence *original)
 {
     parseWS(stream);
     unsigned int denominateur = parseInteger(stream);
@@ -180,13 +180,13 @@ Sequence *SequenceParser::parseTuplet(Stream *stream, Sequence *original)
 
     return new ModifierDuration(numerateur, denominateur, original);
 }
-Sequence *SequenceParser::parseRepetition(Stream *stream, Sequence *original)
+Sequence *SequenceParser::parseRepetition(Streamer *stream, Sequence *original)
 {
     parseWS(stream);
     unsigned int repetition = parseInteger(stream);
     return new ModifierRepetition(repetition, original);
 }
-unsigned int SequenceParser::parseInteger(Stream *stream)
+unsigned int SequenceParser::parseInteger(Streamer *stream)
 {
 
     unsigned int number = 0;
@@ -231,8 +231,9 @@ bool SequenceParser::isGroupEnd(char c)
 
 bool SequenceParser::isNumber(char c)
 {
-    return isdigit(c);
+    return c >= '0' && c <= '9';
 }
+
 bool SequenceParser::isModifier(char c)
 {
     return c == SYMBOL_SEMITONE_UP || c == SYMBOL_SEMITONE_DOWN ||

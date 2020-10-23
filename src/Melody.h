@@ -1,7 +1,6 @@
 #ifndef Melody_h
 #define Melody_h
 
-
 #include "Sequence.h"
 #include "SequenceParser.h"
 #include "SimpleSequence.h"
@@ -14,9 +13,9 @@
 class Melody
 {
 
-ublic:
+public:
 	Melody(char *);
-	Melody(char *,unsigned int);
+	Melody(char *, unsigned int);
 	bool setTempo(unsigned int);
 	unsigned int getTempo();
 	bool hasNext();
@@ -26,13 +25,13 @@ ublic:
 	int index();
 
 	unsigned int getFrequency();
-    unsigned long getDuration();
+	unsigned long getDuration();
 	int getLoudness();
 
 private:
 	unsigned int _tempo;
 	unsigned int _base_duration;
-	Sequence* _Sequence;
+	Sequence *_Sequence;
 	int _index;
 	bool setScore(char *);
 };
