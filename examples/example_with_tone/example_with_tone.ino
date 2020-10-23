@@ -3,9 +3,8 @@
 #define SERIAL_BAUDRATE 115200
 #define BROCHE_TONE 8
 
-//Wolfgang Amadeus Mozart, Eine kleine Nachtmusik (KV 525),
-char mozartScore[] = "  g<r-d- |g< r-d-(g<dg<b)-d<*r | c*<r-a-c*<r-a- |(c*<af#<a)-d<r | (gr)- g. (bag | (gag)/3:1 f#)- f#. (ac*f# | ag)- g.  (bag | (gag)/3:1 f#)- f#. (ac*f#)- | (grgr)-- (gf#ef#)-- (grgr)-- (baga)-- | (brbr)-- (d*c*bc*)-- d* r | (de)+  | (d-c.)-c (c-b_.)-  b_ | (( b-a.)- a (gf#ef# | grarbr)- r )_ ";
-Melody mozartMelody(mozartScore, 140);
+//Wolfgang Amadeus Mozart, Eine kleine Nachtmusik (KV 525)
+Melody mozartMelody("g<<r-d- | g<< r-d-(g<dg<b)-d<*r | c*<<r-a-c*<<r-a- |(c*<af#<a)-d<r | (gr)- g. (bag | (gag)/3:1 f#)- f#. (ac*f# | ag)- g.  (bag | (gag)/3:1 f#)- f#. (ac*f#)- | ((grgr)-- (gf#ef#)--)>> ((grgr)-- (baga)--)> | (brbr)-- (d*c*bc*)-- d*< r | ((de)+  | (d-c.)-c (c-b_.)-  b_ | (( b-a.)- a (gf#ef# | (grarbr)>)- r )_)> ", 140);
 
 //Frere Jacques
 Melody frereJacques("(cdec)x2   (efgr)x2   ((gagf)-ec)x2     (c g_ c+)x2"); //Frère Jacques
