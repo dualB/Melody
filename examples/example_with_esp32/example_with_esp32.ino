@@ -5,19 +5,25 @@
 #define CHANNEL 5
 
 //Wolfgang Amadeus Mozart, Eine kleine Nachtmusik (KV 525)
-Melody mozartMelody("g<<r-d- | g<< r-d-(g<dg<b)-d<*r | c*<<r-a-c*<<r-a- |(c*<af#<a)-d<r | (gr)- g. (bag | (gag)/3:1 f#)- f#. (ac*f# | ag)- g.  (bag | (gag)/3:1 f#)- f#. (ac*f#)- | ((grgr)-- (gf#ef#)--)>> ((grgr)-- (baga)--)> | (brbr)-- (d*c*bc*)-- d*< r | ((de)+  | (d-c.)-c (c-b_.)-  b_ | (( b-a.)- a (gf#ef# | (grarbr)>)- r )_)> ", 140);
+Melody mozartNachtmusik("g<<r-d- | g<< r-d-(g<dg<b)-d<*r | c*<<r-a-c*<<r-a- |(c*<af#<a)-d<r | (gr)- g. (bag | (gag)/3:1 f#)- f#. (ac*f# | ag)- g.  (bag | (gag)/3:1 f#)- f#. (ac*f#)- | ((grgr)-- (gf#ef#)--)>> ((grgr)-- (baga)--)> | (brbr)-- (d*c*bc*)-- d*< r | ((de)+  | (d-c.)-c (c-b_.)-  b_ | (( b-a.)- a (gf#ef# | (grarbr)>)- r )_)> ", 140);
+
+//Scale with ascending loudness
+Melody scaleLouder("c>>> d>> e>f g< a<< b<<< c*<<<<", 240);
+
+//Valid choice kind-of sound
+Melody validChoice(" (cgc*)**---");
+
+//Invalid choice kind-of sound
+Melody invalidChoice(" (cg_)__");
 
 //Frere Jacques
 Melody frereJacques("(cdec)x2   (efgr)x2   ((gagf)-ec)x2     (c g_ c+)x2"); //Frère Jacques
 
-//Scale with ascending loudness
-Melody gammeLouder("c>>> d>> e>f g< a<< b<<< c*<<<<", 240);
-
-//Au Clair de la Lune (Twinkle Twinkle little star)
-Melody auClairDeLaLune(" (cccde+dr  ceddc+.r cccde+dr ceddc+.r dddd a_+ a_ r d c (b a g+.r)_ cccde+dr ceddc+.r )*");
+//Au Clair de la Lune
+Melody auClairDeLaLune(" ( (cccde+dr  ceddc+.r)x2  dddd (a+ar)_ dc(b a g+.r)_ cccde+dr ceddc+.r )*");
 
 // John Sebastian Bach, The Musical Offering Theme
-Melody musicalOffering(" (((ce,ga,b_)+rg(f#fee,.)+  dd,c (ba-g-)_ c f e,+d+c+))>>+", 240);
+Melody bachMusicalOffering(" (((ce,ga,b_)+rg(f#fee,.)+  dd,c (ba-g-)_ c f e,+d+c+))>>+", 240);
 
 void setup()
 {
@@ -29,15 +35,19 @@ void setup()
 
 void loop()
 {
-  play(mozartMelody);
+  play(mozartNachtmusik);
+  
+  play(scaleLouder);
+
+  play(validChoice);
+
+  play(invalidChoice);
 
   play(frereJacques);
-
-  play(gammeLouder);
-
+  
   play(auClairDeLaLune);
 
-  play(musicalOffering);
+  play(bachMusicalOffering);
 }
 
 
