@@ -172,12 +172,11 @@ void loop() {
 
 ## Constructeurs
 ```cpp
-Melody();
 Melody(char* score);
 Melody(char* score, unsigned int tempo);
 ```
 
-On peut spécifier dès le départ le score et le tempo, au besoin.
+Le constructeur doit recevoir le score du Melody, soit une chaîne de texte formaté selon la notation MELO. On peut spécifier dès le départ le score et le tempo, au besoin.
 
 ---
 ```cpp
@@ -190,7 +189,7 @@ Cette méthode permet de lire et modifier le tempo de la musique, qui correspond
 ```cpp
 bool setScore(char *score)
 ```
-Cette méthode permet de modifier le score du Melody, soit une chaîne de texte formaté selon la notation MELO. Le score est automatiquement décodé et la valeur TRUE est retourné si le décodage n'a pas rencontré d'erreurs.
+ Le score est automatiquement décodé et la valeur TRUE est retourné si le décodage n'a pas rencontré d'erreurs.
 
 ```cpp
 void restart()
