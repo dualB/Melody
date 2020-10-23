@@ -1,7 +1,7 @@
 #include "Melody.h"
 
 #define SERIAL_BAUDRATE 115200
-#define BROCHE_TONE 8
+#define PIN_TONE 8
 
 //Wolfgang Amadeus Mozart, Eine kleine Nachtmusik (KV 525)
 Melody mozartNachtmusik("g<<r-d- | g<< r-d-(g<dg<b)-d<*r | c*<<r-a-c*<<r-a- |(c*<af#<a)-d<r | (gr)- g. (bag | (gag)/3:1 f#)- f#. (ac*f# | ag)- g.  (bag | (gag)/3:1 f#)- f#. (ac*f#)- | ((grgr)-- (gf#ef#)--)>> ((grgr)-- (baga)--)> | (brbr)-- (d*c*bc*)-- d*< r | ((de)+  | (d-c.)-c (c-b_.)-  b_ | (( b-a.)- a (gf#ef# | (grarbr)>)- r )_)> ", 140);
@@ -31,57 +31,72 @@ void setup()
 
 void loop()
 {
-  play(mozartNachtmusik);
-  
-  play(scaleLouder);
+    play(mozartNachtmusik);
 
-  play(validChoice);
+    play(scaleLouder);
 
-  play(invalidChoice);
+    play(validChoice);
 
-  play(frereJacques);
-  
-  play(auClairDeLaLune);
+    play(invalidChoice);
 
-  play(bachMusicalOffering);
+    play(frereJacques);
+
+    play(auClairDeLaLune);
+
+    play(bachMusicalOffering);
 }
-
 
 void play(Melody melody)
 {
 
     Serial.print("Melody length : ");
-    Serial.println(melody.length());
+    Serial.println(melody.length()); //Get the total length (number of notes) of the melody.
 
-    melody.restart();
+    melody.restart(); //The melody iterator is restarted at the beginning.
 
-    while (melody.hasNext())
+    while (melody.hasNext()) //While there is a next note to play.
     {
-        melody.next();
+        melody.next(); //Move the melody note iterator to the next one.
+
         printInfo(melody);
 
-        unsigned int frequency = melody.getFrequency();
-        unsigned long duration = melody.getDuration();
-        unsigned int loudness = melody.getLoudness();
+        unsigned int frequency = melody.getFrequency(); //Get the frequency in Hz of the curent note.
+        unsigned long duration = melody.getDuration();  //Get the duration in ms of the curent note.
+        unsigned int loudness = melody.getLoudness();   //Get the loudness of the curent note (in a subjective relative scale from -3 to +3).
+                                                        //Common interpretation will be -3 is really soft (ppp), and 3 really loud (fff).
 
         if (frequency > 0)
         {
-            tone(BROCHE_TONE, frequency);
+            tone(PIN_TONE, frequency);
         }
         else
         {
-            noTone(BROCHE_TONE);
+            noTone(PIN_TONE);
         }
+
+        /*
+        // Loudness could be use with a mapping function, according to your buzzer or sound-producing hardware
+        //For Example :
+        
+        int realIntensity = map(loudness, -4, 4, 0, 1023);
+        myBuzzer.setIntensity(realIntensity);
+        */
+
         delay(duration);
+
+        //This 1 ms delay with no tone is added to let a "breathing" time between each note.
+        //Without it, identical consecutives notes will sound like just one long note.
+        noTone(PIN_TONE);
+        delay(1);
     }
-    
-    noTone(BROCHE_TONE);
+
+    noTone(PIN_TONE);
     delay(1000);
 }
 
 void printInfo(Melody melody)
 {
-    Serial.print(melody.index() + 1);
+    Serial.print(melody.index() + 1); //Get the index of the current note.
     Serial.print("/");
     Serial.print(melody.length());
     Serial.print(" : ");
