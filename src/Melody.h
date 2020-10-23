@@ -14,13 +14,11 @@
 class Melody
 {
 
-public:
-	Melody();
+ublic:
 	Melody(char *);
 	Melody(char *,unsigned int);
 	bool setTempo(unsigned int);
 	unsigned int getTempo();
-	bool setScore(char *);
 	bool hasNext();
 	void restart();
 	void next();
@@ -36,6 +34,7 @@ private:
 	unsigned int _base_duration;
 	Sequence* _Sequence;
 	int _index;
+	bool setScore(char *);
 };
 
 #endif
