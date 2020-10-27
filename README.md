@@ -1,3 +1,264 @@
+**La version en français est disponible plus bas.**
+
+# Melody library
+
+
+This library sets up a simple but complete notation system, called MELO, in order to write melodies (a series of musical notes in a single voice) in order to facilitate the bridge between musical notation and sound generation.
+
+
+## Motivations for the library
+
+On the one hand, musical notation makes it possible to write a series of notes, according to standards known for a long time; letters and symbols are used to name notes, to specify rhythm changes or alterations (sharps, flats), or even repetitions.
+
+On the other hand, the generation of a sound with Arduino (usually using a buzzer), should rather be expressed by the frequency of the sound (in Hz), its duration (in milliseconds) and its loudness (which depends on the material used).
+
+As a musician, writing music for Arduino, in terms of Hz and milliseconds is definitely a drag and weighs down writing, while not taking advantage of the already rich musical notation. The Melody library is the bridge between the two.
+
+## The MELO notation
+
+The MELO notation (MELO stands for Melody) is a textual format which allows the simplified writing of a melody of a single voice. This notation is notably inspired by standard musical notation.
+
+Exeaple : 
+
+#### C scale
+```
+" c d e f g a b c* "
+```
+
+
+#### Wolfgang Amadeus Mozart, Eine kleine Nachtmusik (KV 525):
+
+```
+"g<<r-d- | g<< r-d-(g<dg<b)-d<*r | c*<<r-a-c*<<r-a- |(c*<af#<a)-d<r | (gr)- g. (bag | (gag)/3:1 f#)- f#. (ac*f# | ag)- g.  (bag | (gag)/3:1 f#)- f#. (ac*f#)- | ((grgr)-- (gf#ef#)--)>> ((grgr)-- (baga)--)> | (brbr)-- (d*c*bc*)-- d*< r | ((de)+  | (d-c.)-c (c-b_.)-  b_ | (( b-a.)- a (gf#ef# | (grarbr)>)- r )_)> "
+
+```
+#### Au Clair de la Lune (french song)
+```
+" ( (cccde+dr  ceddc+.r)x2  dddd (a+ar)_ dc(b a g+.r)_ cccde+dr ceddc+.r )*"
+```
+
+### A sequence
+
+A sequence is the basic form of the MELO notation. It is made up of a series of notes or groups of notes, followed by a modifier. You can space these series of notes or groups apart or not. Each modifier will modify the note or the group of notes that precede it.
+
+![Sequence](docs/sequence.svg)
+
+#### Exemples
+
+- "cdefgab"
+- "c d e f  g a b"
+- "c_ c c*"
+- "c\* d\* e\* f\*" is equivalent to "(cdef)\*"
+
+### Note
+
+A note is represented by a letter (uppercase or lowercase), according to the standard nomenclature C (do), D (ré), E (mi) F (fa), G (sol), A (la), B (si) . We also add the letter R (rest) for the rests. By default, the notes are those of the 4th octave, where the note A is of frequency 440 Hz; they all have a relative duration of 1, corresponding to a 'quarter note' in standard musical notation.
+![Note](docs/note.svg)
+
+#### Examples
+
+- "c d r" is equivalent to "C D R"
+
+### Group
+
+A group makes it easy to apply a modifier to an entire melody at once, in order to lighten the writing. A group is delimited by a pair of parentheses.
+
+![Group](docs/group.svg)
+
+#### Examples
+- "(cde)#" is equivalent to "c# d# e#"
+- "(efg)\*-" is equivalent to "e\*- f\*- g\*-"
+- "((abc#)-)x2  is equivalent to " a- b- c#- a- b- c#-"
+
+### Modifier
+
+A modifier is a sequence of alterations that allows you to modify the pitch, duration, number of repetitions or loudness of a note or group of notes. You can specify several modifiers in a row; they have the properties of being commutative, that is to say that the order in which they are written will not matter.
+
+![Modifier](docs/modifier.svg)
+
+#### Examples
+- "c+"  do 2 fois plus long
+- "(cde)x3" équivalent à "cdecdecde"
+- "d#"  ré, demi-ton plus haut
+- "e_"  mi, une octave plus bas
+- "a*_" la sans modification, car un octave plus haut et un octave plus bas s'annule
+- "b_>" si, un octave plus bas et plus doux
+
+### Pitch
+
+A pitch modifier lets you raise or lower a note by a semitone or an octave.
+
+![Pitch](docs/pitch.svg)
+
+- "c#"  do, un demi-ton plus haut
+- "d*"  ré, une octave plus haut
+- "e,"  mi, un demi-ton plus bas
+- "f_" fa, une octave plus bas
+
+### Duration
+
+A duration modifier allows you to multiply the duration of a note by a simple factor (2, 1/2 or 3/2); it also allows you to specify more precisely any type of time weighting (for example, for triplets). By default, all notes have a duration of 1.
+
+![Duration](docs/duration.svg)
+
+- "c+"  do 2 fois plus long, équivalent à une blanche
+- "c-"  do 2 fois plus court, équivalent à une croche
+- "c."  do 1.5 fois plus long, équivalent à une noire pointée
+- "(ccc)/3:1" équivalent à un triolet de do, (trois notes de durée 1/3 chacun) 
+
+### Repetition
+
+A repeat modifier allows you to specify a number of consecutive repetitions for the note or group of notes concerned.
+
+![Repetition](docs/repetition.svg)
+
+- "(cde) x 3" équivalent à "cdecdecde"
+- "( a X2 ef)x2" équivalent à "aaefaaef"
+
+### Loudness
+
+A sound intensity modifier allows you to increase or decrease the strength of the sound. A note has, by default, an intensity of 0; we can therefore go there with positive or negative values. Since the actual loudness depends on the hardware used, it is suggested to use a relative scale ranging from -3 (really really soft, or *ppp*) to +3 (really really loud, or *fff*).
+
+![Loudness](docs/loudness.svg)
+
+- "c>>>" do très très doux (ppp), loudness = -3
+- "d>>" ré très doux (pp),  loudness = -2
+- "e>" mi doux (p),  loudness = -1
+- "f" fa normal, loudness = 0
+- "g<" sol fort (f), loudness = 1
+- "a<<" la très fort (ff), loudness = 2
+- "b<<<" si très très fort (fff), loudness = 3
+
+### Integer
+
+An integer must be strictly positive (cannot be zero).
+
+![Integer](docs/integer.svg)
+
+- "1" est valide
+- "001" est valide
+- "123" est valide
+- "0" est invalide
+- "000" est invalide
+
+### Space
+
+Allowed spaces include characters commonly used as spacers; we add the vertical bar '|', because it is often used in musical notation to identify measures and facilitate reading for the user. These spaces are optional and are ignored when decoding the text.
+
+![Space](docs/space.svg)
+
+-" | cdec | cdec | " est équivalent à "cdeccdec"
+
+## Utilisation
+
+```cpp
+#include <Melody.h>
+
+#define PIN_BUZZER 12
+
+Melody melody();
+
+void setup() {
+  melody.setScore("c d e f g a c*");  //May be changed whenever you want
+  melody.setTempo(120);               //May be changed whenever you want
+}
+
+void loop() {
+ 
+  melody.restart();
+
+  while(melody.hasNext()){
+    melody.next();
+
+    unsigned int freq = melody.getFrequency(); 
+    unsigned long duration = melody.getDuration();
+    int loudness = melody.getLoudness();
+
+    freq > 0 ? tone(PIN_BUZZER,freq,duration) : noTone();
+
+    // loudness could be use with a mapping, according to your buzzer or sound-producing hardware
+    //For Example :
+    /*
+      { 
+        int realIntensity = map(loudness, -4, 4, 0, 1023);
+        myBuzzer.setIntensity(realIntensity);
+      }
+
+
+    */
+
+  }
+}
+
+```
+
+## Constructeurs
+```cpp
+Melody(char* score);
+Melody(char* score, unsigned int tempo);
+```
+
+The constructor must receive the melody score, which is a text string formatted according to the MELO notation. You can specify the score and tempo right from the start, if needed.
+
+---
+```cpp
+void setTempo(unsigned int tempo)
+int getTempo()
+```
+This method allows you to read and modify the tempo of the music, which corresponds to the number of musical beats during one minute. For example, a tempo of 120 means that there will be 120 1-beat notes played for 1 minute - or each note will be 0.5 seconds long.
+---
+```cpp
+bool setScore(char *score)
+```
+ The score is automatically decoded and the value TRUE is returned if the decoding has not encountered any errors.
+
+```cpp
+void restart()
+```
+This method allows you to restart melody iteration.
+
+---
+```cpp
+int length()
+```
+This method returns the total number of notes in the melody.
+---
+```cpp
+bool hasNext()
+```
+This method lets you know if there is a next note to play in the melody. It must be used with the next()) method;
+---
+```cpp
+void next()
+```
+This method skips to the next note of the melody.
+
+---
+```cpp
+int index()
+```
+This method returns the index of the current note, in zero base.
+---
+```cpp
+ unsigned int getFrequency()
+```
+This method returns the value in Hz of the current note. If the value is zero, it means it is silence.
+
+---
+```cpp
+ unsigned long getDuration()
+```
+
+This method returns the duration of the current note, in milliseconds.
+---
+```cpp
+ int getLoudness()
+```
+
+This method returns the relative loudness of the current note.
+
+---
+
 # Librairie Melody
 
 Cette librairie instaure un système de notation simple mais complet, appelé MELO, afin d'écrire des mélodies (suite de notes musicales à une seule voix) dans le but de faciliter le pont entre la notation musicale et la génération du son.
@@ -114,7 +375,7 @@ Un modifieur de répétition permet de spécifier un nombre de répétition cons
 
 ### Loudness
 
-Un modifieur d'intensité sonore permet d'augmenter ou de diminuer la force du son. Une note a, par défaut, une intensité de 0; on peut donc avec des valeurs positives ou négatives. Puisque l'intensité sonore réelle dépend du matériel utilisé, il est suggéré d'utiliser une échelle relative allant de -3 (ppp) à +3 (fff).
+Un modifieur d'intensité sonore permet d'augmenter ou de diminuer la force du son. Une note a, par défaut, une intensité de 0; on peut donc y aller avec des valeurs positives ou négatives. Puisque l'intensité sonore réelle dépend du matériel utilisé, il est suggéré d'utiliser une échelle relative allant de -3 (ppp) à +3 (fff).
 
 ![Loudness](docs/loudness.svg)
 
@@ -213,7 +474,7 @@ bool setScore(char *score)
 ```cpp
 void restart()
 ```
-Cette méthode permet de redémarrer la lecture de la mélodie.
+Cette méthode permet de redémarrer l'itération de la mélodie.
 
 
 ---
