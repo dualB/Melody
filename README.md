@@ -14,6 +14,25 @@ En tant que musicien, écrire de la musique pour Arduino, en terme de Hz et de m
 
 La notation MELO (pour Melody) est un format textuel qui permet l'écriture simplifié d'une mélodie à une voix. Cette notation s'inspire notamment de la notation musicale standard.
 
+Exemple : 
+
+#### Gamme de do
+```
+" c d e f g a b c* "
+```
+
+
+#### Wolfgang Amadeus Mozart, Eine kleine Nachtmusik (KV 525):
+
+```
+"g<<r-d- | g<< r-d-(g<dg<b)-d<*r | c*<<r-a-c*<<r-a- |(c*<af#<a)-d<r | (gr)- g. (bag | (gag)/3:1 f#)- f#. (ac*f# | ag)- g.  (bag | (gag)/3:1 f#)- f#. (ac*f#)- | ((grgr)-- (gf#ef#)--)>> ((grgr)-- (baga)--)> | (brbr)-- (d*c*bc*)-- d*< r | ((de)+  | (d-c.)-c (c-b_.)-  b_ | (( b-a.)- a (gf#ef# | (grarbr)>)- r )_)> "
+
+```
+#### Au Clair de la Lune
+```
+" ( (cccde+dr  ceddc+.r)x2  dddd (a+ar)_ dc(b a g+.r)_ cccde+dr ceddc+.r )*"
+```
+
 ### Mélodie
 
 La mélodie est la forme de base de la notation. Elle est formée d'une suite de note ou de groupe de notes, suivi de modificateur. On peut espacer ou non ces suites de notes ou groupes. Chaque modifieur viendra modifier la note ou le groupe de notes qui le précède.
@@ -69,7 +88,7 @@ Un modifieur de hauteur du son permet d'augmenter ou d'abaisser une note d'un de
 ![Pitch](docs/pitch.svg)
 
 - "c#"  do, un demi-ton plus haut
-- "d*"  ré, une octave plus bas
+- "d*"  ré, une octave plus haut
 - "e,"  mi, un demi-ton plus bas
 - "f_" fa, une octave plus bas
 
