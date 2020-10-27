@@ -18,7 +18,7 @@ As a musician, writing music for Arduino, in terms of Hz and milliseconds is def
 
 The MELO notation (MELO stands for Melody) is a textual format which allows the simplified writing of a melody of a single voice. This notation is notably inspired by standard musical notation.
 
-Exeaple : 
+## Exemples
 
 #### C scale
 ```
@@ -36,6 +36,8 @@ Exeaple :
 ```
 " ( (cccde+dr  ceddc+.r)x2  dddd (a+ar)_ dc(b a g+.r)_ cccde+dr ceddc+.r )*"
 ```
+
+## MELO notation rules
 
 ### A sequence
 
