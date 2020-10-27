@@ -18,7 +18,7 @@ As a musician, writing music for Arduino, in terms of Hz and milliseconds is def
 
 The MELO notation (MELO stands for Melody) is a textual format which allows the simplified writing of a melody of a single voice. This notation is notably inspired by standard musical notation.
 
-## Exemples
+## Examples
 
 #### C scale
 ```
@@ -45,16 +45,17 @@ A sequence is the basic form of the MELO notation. It is made up of a series of 
 
 ![Sequence](docs/sequence.svg)
 
-#### Exemples
+#### Examples
 
 - "cdefgab"
 - "c d e f  g a b"
-- "c_ c c*"
-- "c\* d\* e\* f\*" is equivalent to "(cdef)\*"
+- "c_ c c*<"
+- "(cdef)\*" is equivalent to "c\* d\* e\* f\*"
 
 ### Note
 
 A note is represented by a letter (uppercase or lowercase), according to the standard nomenclature C (do), D (ré), E (mi) F (fa), G (sol), A (la), B (si) . We also add the letter R (rest) for the rests. By default, the notes are those of the 4th octave, where the note A is of frequency 440 Hz; they all have a relative duration of 1, corresponding to a 'quarter note' in standard musical notation.
+
 ![Note](docs/note.svg)
 
 #### Examples
@@ -63,7 +64,7 @@ A note is represented by a letter (uppercase or lowercase), according to the sta
 
 ### Group
 
-A group makes it easy to apply a modifier to an entire melody at once, in order to lighten the writing. A group is delimited by a pair of parentheses.
+A group makes it easy to apply a modifier to an entire sequence at once, in order to lighten the writing. A group is delimited by a pair of parentheses.
 
 ![Group](docs/group.svg)
 
@@ -152,6 +153,9 @@ Allowed spaces include characters commonly used as spacers; we add the vertical 
 -" | cdec | cdec | " est équivalent à "cdeccdec"
 
 ## Utilisation
+
+Note : It is suggested to use the library [Musician](https://github.com/dualB/Musician) with Melody to make it easier to play sound with your hardware.
+
 
 ```cpp
 #include <Melody.h>
@@ -410,6 +414,8 @@ Les espaces permis incluent les caractères couramment utilisé comme espaceur; 
 -" | cdec | cdec | " est équivalent à "cdeccdec"
 
 ## Utilisation
+
+Note : Il est fortement suggéré d'utiliser la librairie [Musician](https://github.com/dualB/Musician) avec Melody pour faciliter le production du son avec votre périphérique.
 
 ```cpp
 #include <Melody.h>
