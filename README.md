@@ -249,5 +249,3 @@ Cette méthode retourne l'intensité sonore relative de la note courante.
 
 
 
-
-
