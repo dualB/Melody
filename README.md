@@ -162,11 +162,10 @@ Note : It is suggested to use the library [Musician](https://github.com/dualB/Mu
 
 #define PIN_BUZZER 12
 
-Melody melody();
+Melody melody("c d e f g a c*");
 
 void setup() {
-  melody.setScore("c d e f g a c*");  //May be changed whenever you want
-  melody.setTempo(120);               //May be changed whenever you want
+   melody.setTempo(120);               //May be changed whenever you want
 }
 
 void loop() {
@@ -213,10 +212,6 @@ int getTempo()
 ```
 This method allows you to read and modify the tempo of the music, which corresponds to the number of musical beats during one minute. For example, a tempo of 120 means that there will be 120 1-beat notes played for 1 minute - or each note will be 0.5 seconds long.
 ---
-```cpp
-bool setScore(char *score)
-```
- The score is automatically decoded and the value TRUE is returned if the decoding has not encountered any errors.
 
 ```cpp
 void restart()
@@ -422,10 +417,9 @@ Note : Il est fortement suggéré d'utiliser la librairie [Musician](https://git
 
 #define PIN_BUZZER 12
 
-Melody melody();
+Melody melody("c d e f g a c*");
 
 void setup() {
-  melody.setScore("c d e f g a c*");  //May be changed whenever you want
   melody.setTempo(120);               //May be changed whenever you want
 }
 
@@ -474,11 +468,6 @@ int getTempo()
 Cette méthode permet de lire et modifier le tempo de la musique, qui correspond au nombre de temps musicaux durant une minute. Par exemple, un tempo de 120 signifie qu'il y aura 120 notes de 1 temps joué durant 1 minute - ou que chaque note durera 0.5 seconde.
 
 ---
-```cpp
-bool setScore(char *score)
-```
- Le score est automatiquement décodé et la valeur TRUE est retourné si le décodage n'a pas rencontré d'erreurs.
-
 ```cpp
 void restart()
 ```
