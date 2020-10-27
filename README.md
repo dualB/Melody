@@ -197,7 +197,7 @@ void loop() {
 
 ```
 
-## Constructeurs
+## Constructors
 ```cpp
 Melody(char* score);
 Melody(char* score, unsigned int tempo);
@@ -210,9 +210,10 @@ The constructor must receive the melody score, which is a text string formatted 
 void setTempo(unsigned int tempo)
 int getTempo()
 ```
-This method allows you to read and modify the tempo of the music, which corresponds to the number of musical beats during one minute. For example, a tempo of 120 means that there will be 120 1-beat notes played for 1 minute - or each note will be 0.5 seconds long.
----
 
+This method allows you to read and modify the tempo of the music, which corresponds to the number of musical beats during one minute. For example, a tempo of 120 means that there will be 120 1-beat notes played for 1 minute - or each note will be 0.5 seconds long.
+
+---
 ```cpp
 void restart()
 ```
@@ -223,11 +224,13 @@ This method allows you to restart melody iteration.
 int length()
 ```
 This method returns the total number of notes in the melody.
+
 ---
 ```cpp
 bool hasNext()
 ```
 This method lets you know if there is a next note to play in the melody. It must be used with the next()) method;
+
 ---
 ```cpp
 void next()
@@ -239,6 +242,7 @@ This method skips to the next note of the melody.
 int index()
 ```
 This method returns the index of the current note, in zero base.
+
 ---
 ```cpp
  unsigned int getFrequency()
@@ -251,6 +255,7 @@ This method returns the value in Hz of the current note. If the value is zero, i
 ```
 
 This method returns the duration of the current note, in milliseconds.
+
 ---
 ```cpp
  int getLoudness()
@@ -259,7 +264,6 @@ This method returns the duration of the current note, in milliseconds.
 This method returns the relative loudness of the current note.
 
 ---
-
 # Librairie Melody
 
 Cette librairie instaure un système de notation simple mais complet, appelé MELO, afin d'écrire des mélodies (suite de notes musicales à une seule voix) dans le but de faciliter le pont entre la notation musicale et la génération du son.
@@ -472,7 +476,6 @@ Cette méthode permet de lire et modifier le tempo de la musique, qui correspond
 void restart()
 ```
 Cette méthode permet de redémarrer l'itération de la mélodie.
-
 
 ---
 ```cpp
