@@ -80,12 +80,12 @@ A modifier is a sequence of alterations that allows you to modify the pitch, dur
 ![Modifier](docs/modifier.svg)
 
 #### Examples
-- "c+"  do 2 fois plus long
-- "(cde)x3" équivalent à "cdecdecde"
-- "d#"  ré, demi-ton plus haut
-- "e_"  mi, une octave plus bas
-- "a*_" la sans modification, car un octave plus haut et un octave plus bas s'annule
-- "b_>" si, un octave plus bas et plus doux
+- "c+"  c, 2 times longer
+- "(cde)x3"  is equivalent to  "cdecdecde"
+- "d#"  d, one semitone higher
+- "e_"  mi, one octave lower
+- "a*_" a without any modification, since the effect of 'one octave lower' is cancelled by 'one octave higher'
+- "b,>+" b, one semitone lower, 2 times longer, and softer
 
 ### Pitch
 
@@ -93,10 +93,10 @@ A pitch modifier lets you raise or lower a note by a semitone or an octave.
 
 ![Pitch](docs/pitch.svg)
 
-- "c#"  do, un demi-ton plus haut
-- "d*"  ré, une octave plus haut
-- "e,"  mi, un demi-ton plus bas
-- "f_" fa, une octave plus bas
+- "c#"  c, one semitone higher
+- "d*"  d, one semitone lower
+- "e*"  e,  one octave higher
+- "f_"  f,  one octave lower
 
 ### Duration
 
@@ -104,10 +104,10 @@ A duration modifier allows you to multiply the duration of a note by a simple fa
 
 ![Duration](docs/duration.svg)
 
-- "c+"  do 2 fois plus long, équivalent à une blanche
-- "c-"  do 2 fois plus court, équivalent à une croche
-- "c."  do 1.5 fois plus long, équivalent à une noire pointée
-- "(ccc)/3:1" équivalent à un triolet de do, (trois notes de durée 1/3 chacun) 
+- "c+"  c, 2 times longer, equivalent to an half note
+- "c-"  c 2 times shorter, equivalent to an eighth note
+- "c."  c, 1.5 times longer, equivalent to an quarter note + an eighth note.
+- "(ccc)/3:1" equivalent to a triplet of c, (three notes of 1/3 the duration of one quarter note) 
 
 ### Repetition
 
@@ -115,8 +115,8 @@ A repeat modifier allows you to specify a number of consecutive repetitions for 
 
 ![Repetition](docs/repetition.svg)
 
-- "(cde) x 3" équivalent à "cdecdecde"
-- "( a X2 ef)x2" équivalent à "aaefaaef"
+- "(cde) x 3" equivalent to "cdecdecde"
+- "( a X2 ef)x2" equivalent to "aaefaaef"
 
 ### Loudness
 
@@ -124,13 +124,13 @@ A sound intensity modifier allows you to increase or decrease the strength of th
 
 ![Loudness](docs/loudness.svg)
 
-- "c>>>" do très très doux (ppp), loudness = -3
-- "d>>" ré très doux (pp),  loudness = -2
-- "e>" mi doux (p),  loudness = -1
-- "f" fa normal, loudness = 0
-- "g<" sol fort (f), loudness = 1
-- "a<<" la très fort (ff), loudness = 2
-- "b<<<" si très très fort (fff), loudness = 3
+- "c>>>" c, really really soft (*ppp*), loudness = -3
+- "d>>" d, really soft (*pp*),  loudness = -2
+- "e>" e, soft (*p*),  loudness = -1
+- "f" f, normal, loudness = 0
+- "g<" g, loud (*f*), loudness = 1
+- "a<<" a really loud (*ff*), loudness = 2
+- "b<<<" b, really really loud (*fff*), loudness = 3
 
 ### Integer
 
@@ -138,11 +138,11 @@ An integer must be strictly positive (cannot be zero).
 
 ![Integer](docs/integer.svg)
 
-- "1" est valide
-- "001" est valide
-- "123" est valide
-- "0" est invalide
-- "000" est invalide
+- "1" is valid
+- "001" is valid
+- "123" is valid
+- "0" is invalid
+- "000" is invalid
 
 ### Space
 
@@ -150,9 +150,9 @@ Allowed spaces include characters commonly used as spacers; we add the vertical 
 
 ![Space](docs/space.svg)
 
--" | cdec | cdec | " est équivalent à "cdeccdec"
+-" | cdec | cdec | " is equivalent to "cdeccdec"
 
-## Utilisation
+## Use
 
 Note : It is suggested to use the library [Musician](https://github.com/dualB/Musician) with Melody to make it easier to play sound with your hardware.
 
@@ -359,7 +359,7 @@ Un modifieur est une suite d'altération qui permet de modifier la hauteur, la d
 - "d#"  ré, demi-ton plus haut
 - "e_"  mi, une octave plus bas
 - "a*_" la sans modification, car un octave plus haut et un octave plus bas s'annule
-- "b_>" si, un octave plus bas et plus doux
+- "b,>" si, un demi-ton plus bas et plus doux
 
 ### Pitch
 
@@ -398,13 +398,13 @@ Un modifieur d'intensité sonore permet d'augmenter ou de diminuer la force du s
 
 ![Loudness](docs/loudness.svg)
 
-- "c>>>" do très très doux (ppp), loudness = -3
-- "d>>" ré très doux (pp),  loudness = -2
-- "e>" mi doux (p),  loudness = -1
+- "c>>>" do très très doux (*ppp*), loudness = -3
+- "d>>" ré très doux (*pp*),  loudness = -2
+- "e>" mi doux (*p*),  loudness = -1
 - "f" fa normal, loudness = 0
-- "g<" sol fort (f), loudness = 1
-- "a<<" la très fort (ff), loudness = 2
-- "b<<<" si très très fort (fff), loudness = 3
+- "g<" sol fort (*f*), loudness = 1
+- "a<<" la très fort (*ff*), loudness = 2
+- "b<<<" si très très fort (*fff*), loudness = 3
 
 ### Integer
 
