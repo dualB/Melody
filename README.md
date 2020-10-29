@@ -205,6 +205,20 @@ Melody(char* score, unsigned int tempo);
 
 The constructor must receive the melody score, which is a text string formatted according to the MELO notation. You can specify the score and tempo right from the start, if needed.
 
+### Error handling
+
+If your MELO text string contains an invalid caracter or an invalid syntax, the Melody object will simply return the portion of the melody before the error was incountered.
+
+For example:
+# 1
+```cpp
+Melody melody(" c d e f g k b");
+```
+This melody will be equivalent to:
+```cpp
+Melody melody(" c d e f g ");
+```
+
 ---
 ```cpp
 void setTempo(unsigned int tempo)
