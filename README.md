@@ -34,7 +34,7 @@ The MELO notation (MELO stands for Melody) is a textual format which allows the 
 ```
 #### Au Clair de la Lune (french song)
 ```
-" ( (cccde+dr  ceddc+.r)x2  dddd (a+ar)_ dc(b a g+.r)_ cccde+dr ceddc+.r )*"
+" (cccde+d+  ceddc++)x2  |  dddd (aa)+_ dc(b a g++)_  |  cccde+d+ ceddc++ "
 ```
 
 ## MELO notation rules
@@ -310,7 +310,7 @@ Exemple :
 ```
 #### Au Clair de la Lune
 ```
-" ( (cccde+dr  ceddc+.r)x2  dddd (a+ar)_ dc(b a g+.r)_ cccde+dr ceddc+.r )*"
+" (cccde+d+  ceddc++)x2  |  dddd (aa)+_ dc(b a g++)_  |  cccde+d+ ceddc++ "
 ```
 
 ### Mélodie
