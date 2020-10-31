@@ -210,11 +210,11 @@ The constructor must receive the melody score, which is a text string formatted 
 If your MELO text string contains an invalid caracter or an invalid syntax, the Melody object will simply return the portion of the melody before the error was incountered.
 
 For example:
-# 1
+
 ```cpp
 Melody melody(" c d e f g k b");
 ```
-This melody will be equivalent to:
+Because of the invalid caracter 'k', this melody will be equivalent to:
 ```cpp
 Melody melody(" c d e f g ");
 ```
@@ -477,6 +477,21 @@ Melody(char* score, unsigned int tempo);
 ```
 
 Le constructeur doit recevoir le score du Melody, soit une chaîne de texte formaté selon la notation MELO. On peut spécifier dès le départ le score et le tempo, au besoin.
+
+### Gestion des erreurs
+
+Si votre chaîne de texte en notation MELO contient un caractère invalide ou une syntaxe invalide, l'objet Melody créé contiendra seulement la portion de la mélodie avant que l'erreur soit détectée.
+
+Par exemple:
+
+```cpp
+Melody melody(" c d e f g k b");
+```
+En raison de la lettre inconnue 'k', cette mélodie sera équivalente à :
+```cpp
+Melody melody(" c d e f g ");
+```
+
 
 ---
 ```cpp
