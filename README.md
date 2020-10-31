@@ -94,8 +94,8 @@ A pitch modifier lets you raise or lower a note by a semitone or an octave.
 ![Pitch](docs/pitch.svg)
 
 - "c#"  c, one semitone higher
-- "d*"  d, one semitone lower
-- "e*"  e,  one octave higher
+- "d*"  d, one octave higher
+- "e,"  e,  one semitone lower
 - "f_"  f,  one octave lower
 
 ### Duration
