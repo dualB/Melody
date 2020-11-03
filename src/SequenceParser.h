@@ -65,30 +65,30 @@ class SequenceParser
 {
 
 public:
-    SequenceParser();
-    Sequence *parse(Streamer *);
-    Sequence *parse(char *);
+    static Sequence *parse(Streamer *);
+    static Sequence *parse(char *);
 
 protected:
+    SequenceParser();   
 private:
-    bool isWS(char);
-    bool isModifier(char);
-    bool isNumber(char);
-    bool isNote(char);
-    bool isName(char);
-    bool isGroupBegin(char);
-    bool isGroupEnd(char);
+    static bool isWS(char);
+    static bool isModifier(char);
+    static bool isNumber(char);
+    static bool isNote(char);
+    static bool isName(char);
+    static bool isGroupBegin(char);
+    static bool isGroupEnd(char);
 
-    Note *noteOf(char);
-    Sequence *parseSequence(Streamer *);
-    Sequence *parseGroup(Streamer *);
-    Sequence *parseNote(Streamer *);
-    Sequence *parseModifier(Streamer *, Sequence *);
-    Sequence *parseRepetition(Streamer *, Sequence *);
-    Sequence *parseTuplet(Streamer *, Sequence *);
+    static Note *noteOf(char);
+    static Sequence *parseSequence(Streamer *);
+    static Sequence *parseGroup(Streamer *);
+    static Sequence *parseNote(Streamer *);
+    static Sequence *parseModifier(Streamer *, Sequence *);
+    static Sequence *parseRepetition(Streamer *, Sequence *);
+    static Sequence *parseTuplet(Streamer *, Sequence *);
 
-    unsigned int parseInteger(Streamer *);
-    void parseWS(Streamer *);
+    static unsigned int parseInteger(Streamer *);
+    static void parseWS(Streamer *);
 
 };
 

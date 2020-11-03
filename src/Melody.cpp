@@ -33,9 +33,7 @@ unsigned int Melody::getTempo()
 bool Melody::setScore(char *score)
 {
 	delete _Sequence;
-	SequenceParser *parser = new SequenceParser();
-	_Sequence = parser->parse(score);
-	delete parser;
+	_Sequence = SequenceParser::parse(score);
 	return true;
 }
 
