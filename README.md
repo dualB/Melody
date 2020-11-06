@@ -197,7 +197,7 @@ void loop() {
 
 ```
 
-## Constructors
+## Constructors and methods
 ```cpp
 Melody(char* score);
 Melody(char* score, unsigned int tempo);
