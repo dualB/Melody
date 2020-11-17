@@ -66,7 +66,8 @@ class SequenceParser
 
 public:
     static Sequence *parse(Streamer *);
-    static Sequence *parse(char *);
+    static Sequence *parse(const char *);
+    static Sequence *parse(String);
 
 protected:
     SequenceParser();   

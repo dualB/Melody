@@ -37,11 +37,14 @@ Sequence *SequenceParser::parse(Streamer *stream)
     }
     return Sequence;
 }
-Sequence *SequenceParser::parse(char *text)
+Sequence *SequenceParser::parse(const char *text)
 {
     return parse(new Streamer(text));
 }
-
+Sequence *SequenceParser::parse(String text)
+{
+    return parse(new Streamer(text));
+}
 Sequence *SequenceParser::parseSequence(Streamer *stream)
 {
 

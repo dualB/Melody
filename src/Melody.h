@@ -16,8 +16,11 @@ class Melody
 public:
 	Melody(char *);
 	Melody(char *, unsigned int);
+	Melody(String);
+	Melody(String, unsigned int);
 	bool setTempo(unsigned int);
 	bool setScore(char *);
+	bool setScore(String);
 	unsigned int getTempo();
 	bool hasNext();
 	void restart();
