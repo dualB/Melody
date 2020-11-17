@@ -1,101 +1,101 @@
-/*
- * Melody with Serial
- * 
- * 
- */
-
 #include "Melody.h"
 
-#define SERIAL_BAUDRATE 115200
-
-#define PIN_TONE 12
-#define CHANNEL 5
-
-#define MIN_HARDWARE_LOUDNESS 0
-#define MAX_HARDWARE_LOUDNESS 16
-
-void setup()
+Melody::Melody(char *score)
 {
-	Serial.begin(SERIAL_BAUDRATE);
-
-	ledcSetup(CHANNEL, 5000, 8);
-	ledcAttachPin(PIN_TONE, CHANNEL);
-	ledcWrite(CHANNEL, 0); //duty Cycle de 0
+	setScore(score);
+	setTempo(DEFAULT_TEMPO);
+	restart();
+}
+Melody::Melody(char *score, unsigned int tempo)
+{
+	setScore(score);
+	setTempo(tempo);
+	restart();
 }
 
-void loop()
+Melody::Melody(String score)
 {
-	if (Serial.available())
+	setScore(score);
+	setTempo(DEFAULT_TEMPO);
+	restart();
+}
+Melody::Melody(String score, unsigned int tempo)
+{
+	setScore(score);
+	setTempo(tempo);
+	restart();
+}
+
+bool Melody::setTempo(unsigned int tempo)
+{
+	if (tempo == 0)
 	{
-
-		String melo = Serial.readString();
-
-		Melody *melody = new Melody(melo);
-		play(melody);
-		delete melody;
+		return false;
 	}
+	_tempo = tempo;
+	_base_duration = 1000 * 60 / _tempo;
+	return true;
 }
 
-void play(Melody *melody)
+unsigned int Melody::getTempo()
 {
+	return _tempo;
+}
 
-	Serial.print("Melody length : ");
-	Serial.println(melody->length()); //Get the total length (number of notes) of the melody.
+bool Melody::setScore(char *score)
+{
+	delete _Sequence;
+	_Sequence = SequenceParser::parse(score);
+	return true;
+}
 
-	melody->restart(); //The melody iterator is restarted at the beginning.
+bool Melody::setScore(String score)
+{
+	delete _Sequence;
+	_Sequence = SequenceParser::parse(score);
+	return true;
+}
 
-	while (melody->hasNext()) //While there is a next note to play.
+bool Melody::hasNext()
+{
+	return _Sequence->hasNext();
+}
+
+void Melody::restart()
+{
+	_Sequence->restart();
+	_index = -1;
+}
+
+void Melody::next()
+{
+	_Sequence->next();
+	_index++;
+}
+
+int Melody::length()
+{
+	return _Sequence->length();
+}
+int Melody::index()
+{
+	return _index;
+}
+unsigned int Melody::getFrequency()
+{
+	if (_Sequence->isRest())
 	{
-		melody->next(); //Move the melody note iterator to the next one.
-
-		printInfo(melody);
-
-		unsigned int frequency = melody->getFrequency(); //Get the frequency in Hz of the curent note.
-		unsigned long duration = melody->getDuration();	 //Get the duration in ms of the curent note.
-		unsigned int loudness = melody->getLoudness();	 //Get the loudness of the curent note (in a subjective relative scale from -3 to +3).
-														 //Common interpretation will be -3 is really soft (ppp), and 3 really loud (fff).
-
-		if (frequency > 0)
-		{
-			tone(frequency, loudness);
-		}
-		else
-		{
-			noTone();
-		}
-
-		delay(duration);
-
-		//This 1 ms delay with no tone is added to let a "breathing" time between each note.
-		//Without it, identical consecutives notes will sound like just one long note.
-		noTone();
-		delay(1);
+		return 0;
 	}
-
-	noTone();
-	delay(1000);
+	return NoteToSound::getFrequency(_Sequence->getNoteIndex());
 }
 
-void printInfo(Melody *melody)
+unsigned long Melody::getDuration()
 {
-	Serial.print(melody->index() + 1); //Get the index of the current note.
-	Serial.print("/");
-	Serial.print(melody->length());
-	Serial.print(" : ");
-	Serial.print(melody->getFrequency());
-	Serial.print("Hz, ");
-	Serial.print(melody->getDuration());
-	Serial.print(" ms, ");
-	Serial.print(melody->getLoudness());
-	Serial.print(" loud.\n");
+	return NoteToSound::getDuration(_base_duration, _Sequence->getDurationNumerator(), _Sequence->getDurationDenominator());
 }
 
-void tone(int frequency, int loudness)
+int Melody::getLoudness()
 {
-	ledcWriteTone(CHANNEL, frequency);
-	ledcWrite(CHANNEL, map(loudness, -4, 4, MIN_HARDWARE_LOUDNESS, MAX_HARDWARE_LOUDNESS));
-}
-void noTone()
-{
-	ledcWrite(CHANNEL, 0);
+	return _Sequence->getIntensityIndex();
 }
