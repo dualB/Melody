@@ -17,6 +17,7 @@ public:
 	Melody(char *);
 	Melody(char *, unsigned int);
 	bool setTempo(unsigned int);
+	bool setScore(char *);
 	unsigned int getTempo();
 	bool hasNext();
 	void restart();
@@ -33,7 +34,7 @@ private:
 	unsigned int _base_duration;
 	Sequence *_Sequence;
 	int _index;
-	bool setScore(char *);
+	
 };
 
 #endif
