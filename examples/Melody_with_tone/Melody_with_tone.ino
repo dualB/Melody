@@ -1,7 +1,20 @@
+/*
+  Melody with Tone
+
+  Multiples melodies are created and will be played using the Tone() and noTone() functions.
+  During playback, informations will be sent via the Serial monitor.
+  On ESP platforms, the functions are created at the end of the example. 
+
+  More information on the MELO notation here : https://github.com/dualB/Melody
+
+  by Claude Bouchard
+  November 2020
+*/
 #include "Melody.h"
 
 #define SERIAL_BAUDRATE 115200
-#define PIN_TONE 8
+#define PIN_TONE 12
+
 
 //Wolfgang Amadeus Mozart, Eine kleine Nachtmusik (KV 525)
 Melody mozartNachtmusik("g<<r-d- | g<< r-d-(g<dg<b)-d<*r | c*<<r-a-c*<<r-a- |(c*<af#<a)-d<r | (gr)- g. (bag | (gag)/3:1 f#)- f#. (ac*f# | ag)- g.  (bag | (gag)/3:1 f#)- f#. (ac*f#)- | ((grgr)-- (gf#ef#)--)>> ((grgr)-- (baga)--)> | (brbr)-- (d*c*bc*)-- d*< r | ((de)+  | (d-c.)-c (c-b_.)-  b_ | (( b-a.)- a (gf#ef# | (grarbr)>)- r )_)> ", 140);
@@ -30,6 +43,12 @@ Melody bachMusicalOffering(" (((ce,ga,b_)+rg(f#fee,.)+  dd,c (ba-g-)_ c f e,+d+c
 void setup()
 {
     Serial.begin(SERIAL_BAUDRATE);
+    #ifdef ESP_PLATFORM
+        #define CHANNEL 5
+        ledcSetup(CHANNEL, 5000, 8);
+        ledcAttachPin(PIN_TONE, CHANNEL);
+        ledcWrite(CHANNEL, 0); //duty Cycle de 0
+    #endif
 }
 
 void loop()
@@ -73,19 +92,12 @@ void play(Melody melody)
         if (frequency > 0)
         {
             tone(PIN_TONE, frequency);
+            setLoudness(loudness);
         }
         else
         {
             noTone(PIN_TONE);
         }
-
-        /*
-        // Loudness could be use with a mapping function, according to your buzzer or sound-producing hardware
-        //For Example :
-        
-        int realIntensity = map(loudness, -4, 4, 0, 1023);
-        myBuzzer.setIntensity(realIntensity);
-        */
 
         delay(duration);
 
@@ -112,3 +124,27 @@ void printInfo(Melody melody)
     Serial.print(melody.getLoudness());
     Serial.print(" loud.\n");
 }
+
+void setLoudness(int loudness){
+    //Loudness could be use with a mapping function, according to your buzzer or sound-producing hardware
+   #ifdef ESP_PLATFORM
+      #define MIN_HARDWARE_LOUDNESS 0
+      #define MAX_HARDWARE_LOUDNESS 16
+      ledcWrite(CHANNEL, map(loudness, -4, 4, MIN_HARDWARE_LOUDNESS, MAX_HARDWARE_LOUDNESS));
+   #endif
+
+}
+
+
+#ifdef ESP_PLATFORM
+
+    void tone(int pin, int frequency) //FOR ESP Platform, pin is unused
+    {
+        ledcWriteTone(CHANNEL, frequency);
+    }
+    void noTone(int pin) //FOR ESP Platform, pin is unused
+    {
+        ledcWrite(CHANNEL, 0);
+    }
+
+#endif
