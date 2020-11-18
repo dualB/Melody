@@ -44,14 +44,12 @@ unsigned int Melody::getTempo()
 
 bool Melody::setScore(char *score)
 {
-	delete _Sequence;
 	_Sequence = SequenceParser::parse(score);
 	return true;
 }
 
 bool Melody::setScore(String score)
 {
-	delete _Sequence;
 	_Sequence = SequenceParser::parse(score);
 	return true;
 }
