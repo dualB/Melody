@@ -199,11 +199,13 @@ void loop() {
 
 ## Constructors and methods
 ```cpp
-Melody(char* score);
-Melody(char* score, unsigned int tempo);
+Melody(const char* score);
+Melody(String score);
+Melody(const char* score, unsigned int tempo);
+Melody(String score, unsigned int tempo);
 ```
 
-The constructor must receive the melody score, which is a text string formatted according to the MELO notation. You can specify the score and tempo right from the start, if needed.
+The constructor must receive the melody score (const char* or String), which is a text string formatted according to the MELO notation. You can specify the score and tempo right from the start, if needed.
 
 ### Error handling
 
@@ -218,6 +220,13 @@ Because of the invalid caracter 'k', this melody will be equivalent to:
 ```cpp
 Melody melody(" c d e f g ");
 ```
+
+---
+```cpp
+void setScore(const char * score)
+void setScore(String score)
+```
+This method allows you to modify the score used, which is a text string formatted according to the MELO notation. 
 
 ---
 ```cpp
@@ -472,11 +481,13 @@ void loop() {
 
 ## Constructeurs
 ```cpp
-Melody(char* score);
-Melody(char* score, unsigned int tempo);
+Melody(const char* score);
+Melody(String score);
+Melody(const char* score, unsigned int tempo);
+Melody(String score, unsigned int tempo);
 ```
 
-Le constructeur doit recevoir le score du Melody, soit une chaîne de texte formaté selon la notation MELO. On peut spécifier dès le départ le score et le tempo, au besoin.
+Le constructeur doit recevoir le score du Melody (const char* ou String), soit une chaîne de texte formaté selon la notation MELO. On peut spécifier dès le départ le score et le tempo, au besoin.
 
 ### Gestion des erreurs
 
@@ -492,6 +503,12 @@ En raison de la lettre inconnue 'k', cette mélodie sera équivalente à :
 Melody melody(" c d e f g ");
 ```
 
+---
+```cpp
+void setScore(const char * score)
+void setScore(String score)
+```
+Cette méthode permet de modifier le score du Melody, soit une chaîne de texte formaté selon la notation MELO.
 
 ---
 ```cpp
