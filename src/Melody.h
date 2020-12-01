@@ -14,6 +14,7 @@ class Melody
 {
 
 public:
+	Melody();
 	Melody(char *);
 	Melody(char *, unsigned int);
 	Melody(String);

@@ -1,5 +1,11 @@
 #include "Melody.h"
 
+Melody::Melody()
+{
+	setScore("");
+	setTempo(DEFAULT_TEMPO);
+	restart();
+}
 Melody::Melody(char *score)
 {
 	setScore(score);
