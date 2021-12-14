@@ -31,6 +31,7 @@ public:
 	unsigned int getFrequency();
 	unsigned long getDuration();
 	int getLoudness();
+	int getNoteIndex();
 
 private:
 	unsigned int _tempo;

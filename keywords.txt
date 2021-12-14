@@ -17,6 +17,7 @@ next	KEYWORD2
 index	KEYWORD2
 getFrequency	KEYWORD2
 getLoudness	KEYWORD2
+getNoteIndex	KEYWORD2
 getDuration	KEYWORD2
 setTempo	KEYWORD2
 getTempo	KEYWORD2

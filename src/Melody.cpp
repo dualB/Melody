@@ -97,3 +97,9 @@ int Melody::getLoudness()
 {
 	return _Sequence->getIntensityIndex();
 }
+
+int Melody::getNoteIndex()
+{
+	return _Sequence->getNoteIndex();
+}
+

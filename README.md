@@ -152,6 +152,18 @@ Allowed spaces include characters commonly used as spacers; we add the vertical 
 
 -" | cdec | cdec | " is equivalent to "cdeccdec"
 
+
+## Versions
+
+- 1.2.0 : Added the method getNoteIndex().
+
+- 1.1.0 : More stable, better examples. The constructor now accepts const char* and string argument.
+
+- 1.0.1 : Added an example file for memory limited devices (such as Arduino Micro or Nano). SequenceParser is now mainly static.
+
+- 1.0.0 : First release, long live to MELO!
+
+
 ## Use
 
 Note : It is suggested to use the library [Musician](https://github.com/dualB/Musician) with Melody to make it easier to play sound with your hardware.
@@ -285,6 +297,13 @@ This method returns the duration of the current note, in milliseconds.
 ```
 
 This method returns the relative loudness of the current note.
+
+---
+```cpp
+ int getNoteIndex()
+```
+
+This method returns the note index, where 0 represent the A on the 4th octave (440Hz). The index can be negative (-1 == G#, -2 == G, and so on) or positive (+1 == A#, +2 == B, and so on). For example, the A0 (the lowest note on a standard piano) will have an index of -48, while the C8 (the highest note on the piano), will have an index of +39.
 
 ---
 # Librairie Melody
@@ -435,6 +454,16 @@ Les espaces permis incluent les caractères couramment utilisé comme espaceur; 
 
 -" | cdec | cdec | " est équivalent à "cdeccdec"
 
+## Versions
+
+- 1.2.0 : Ajout de la méthode getNoteIndex().
+
+- 1.1.0 : Plus stable, meilleurs exemples. Le constructeur accepte maintenant des const char* et string pour argument.
+
+- 1.0.1 : Ajouté un fichier d'exemple pour le matériel limité en mémoire (tel que le Arduino Micro ou Nano). SequenceParser est maintenant surtout statique.
+
+- 1.0.0 : Première version, longue vie à MELO!
+
 ## Utilisation
 
 Note : Il est fortement suggéré d'utiliser la librairie [Musician](https://github.com/dualB/Musician) avec Melody pour faciliter le production du son avec votre périphérique.
@@ -566,12 +595,10 @@ Cette méthode retourne la durée de la note courante, en millisecondes.
 ```
 Cette méthode retourne l'intensité sonore relative de la note courante.
 
+```cpp
+ int getNoteIndex()
+```
 
+Cette méthode retourne l'index de la note, où l'index 0 représente le LA sur le 4e octave (440 Hz). L'index peut être négatif (-1 == G#, -2 == G, ainsi de suite) ou positif (+1 == A#, +2 == B, ainsi de suite). Par exemple, le A0 (la note la plus grave sur un piano standard) aura un index de -48, tandis que le C8 (la note la plus aigü sur un piano), aura un index de +39.
 
-
-
-
-
-
-
-
+---

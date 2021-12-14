@@ -9,6 +9,7 @@
 
   by Claude Bouchard
   November 2020
+  Modified : December 2021
 */
 
 #include "Melody.h"
@@ -67,7 +68,8 @@ void play(Melody* melody)
         unsigned long duration = melody->getDuration();  //Get the duration in ms of the curent note.
         unsigned int loudness = melody->getLoudness();   //Get the loudness of the curent note (in a subjective relative scale from -3 to +3).
                                                         //Common interpretation will be -3 is really soft (ppp), and 3 really loud (fff).
-
+        int noteIndex = melody->getNoteIndex();         //Get the index of the note.
+        
         if (frequency > 0)
         {
             tone(PIN_TONE, frequency);
@@ -97,7 +99,9 @@ void printInfo(Melody *melody)
   Serial.print(melody->length());
   Serial.print(" : ");
   Serial.print(melody->getFrequency());
-  Serial.print("Hz, ");
+  Serial.print("Hz (index ");
+  Serial.print(melody->getNoteIndex());
+  Serial.print("), ");
   Serial.print(melody->getDuration());
   Serial.print(" ms, ");
   Serial.print(melody->getLoudness());
