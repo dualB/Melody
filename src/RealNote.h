@@ -12,6 +12,7 @@ public:
 	RealNote(int, bool rest = false);
 	int getNoteIndex();
 	bool isRest();
+	int getBreath();
 
 
 

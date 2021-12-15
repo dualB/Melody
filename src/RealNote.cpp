@@ -7,3 +7,4 @@ RealNote::RealNote(int index, bool rest)
 }
 int RealNote::getNoteIndex() { return _index; }
 bool RealNote::isRest() { return _rest; }
+int RealNote::getBreath() { return _rest ? -1 : 0; }

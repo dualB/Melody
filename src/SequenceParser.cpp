@@ -6,6 +6,7 @@
 #include "RealNote.h"
 #include "Modifier.h"
 #include "ModifierDuration.h"
+#include "ModifierBreath.h"
 #include "ModifierRepetition.h"
 #include "ModifierIntensity.h"
 #include "ModifierIndex.h"
@@ -147,6 +148,12 @@ Sequence *SequenceParser::parseModifier(Streamer *stream, Sequence *original)
                                        c == SYMBOL_DURATION_THREE_HALF ? 2 : c == SYMBOL_DURATION_DOUBLE ? 1 : 2,
                                        cur);
             break;
+        case SYMBOL_INTERPRETATION_BREATH:
+            cur = parseBreath(stream,cur);
+            break;
+        case SYMBOL_INTERPRETATION_TIE:
+            cur = new ModifierBreath(-1,cur);
+            break;
         case SYMBOL_DYNAMICS_PIANO:
         case SYMBOL_DYNAMICS_FORTE:
             cur = new ModifierIntensity(c == SYMBOL_DYNAMICS_FORTE ? +1 : -1, cur);
@@ -189,6 +196,15 @@ Sequence *SequenceParser::parseRepetition(Streamer *stream, Sequence *original)
     unsigned int repetition = parseInteger(stream);
     return new ModifierRepetition(repetition, original);
 }
+
+Sequence *SequenceParser::parseBreath(Streamer *stream, Sequence *original)
+{
+    parseWS(stream);
+    unsigned int denominateur = parseInteger(stream);
+    return new ModifierBreath(denominateur, original);
+}
+
+
 unsigned int SequenceParser::parseInteger(Streamer *stream)
 {
 
@@ -242,6 +258,7 @@ bool SequenceParser::isModifier(char c)
     return c == SYMBOL_SEMITONE_UP || c == SYMBOL_SEMITONE_DOWN ||
            c == SYMBOL_OCTAVE_UP || c == SYMBOL_OCTAVE_DOWN ||
            c == SYMBOL_DURATION_DOUBLE || c == SYMBOL_DURATION_HALF || c == SYMBOL_DURATION_THREE_HALF ||
+           c == SYMBOL_INTERPRETATION_BREATH || c == SYMBOL_INTERPRETATION_TIE ||
            c == SYMBOL_DURATION_TUPLETS_BEGIN ||
            c == SYMBOL_DYNAMICS_PIANO || c == SYMBOL_DYNAMICS_FORTE ||
            c == SYMBOL_REPEAT_BEGIN_UPPERCASE || c == SYMBOL_REPEAT_BEGIN_LOWERCASE;

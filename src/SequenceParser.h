@@ -14,6 +14,9 @@
 #define SYMBOL_DURATION_HALF '-'
 #define SYMBOL_DURATION_THREE_HALF '.'
 
+#define SYMBOL_INTERPRETATION_BREATH '!'
+#define SYMBOL_INTERPRETATION_TIE '='
+
 #define SYMBOL_DURATION_TUPLETS_BEGIN '/'
 #define SYMBOL_DURATION_TUPLETS_SEPARATOR ':'
 
@@ -85,6 +88,7 @@ private:
     static Sequence *parseGroup(Streamer *);
     static Sequence *parseNote(Streamer *);
     static Sequence *parseModifier(Streamer *, Sequence *);
+    static Sequence *parseBreath(Streamer *, Sequence *);
     static Sequence *parseRepetition(Streamer *, Sequence *);
     static Sequence *parseTuplet(Streamer *, Sequence *);
 
