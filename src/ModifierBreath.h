@@ -9,7 +9,7 @@ class ModifierBreath : public Modifier
 {
 
 public:
-	ModifierBreath(unsigned int denom, Sequence *note = nullptr);
+	ModifierBreath(unsigned int denom,unsigned int num, Sequence *note = nullptr);
 	bool hasNext();
 	void restart();
 	void next();

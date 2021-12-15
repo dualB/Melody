@@ -29,6 +29,7 @@ public:
 
 	int getNoteIndex();
 	bool isRest();
+	int isTieOrBreath();
 	unsigned int getDurationNumerator();
 	unsigned int getDurationDenominator();
 	int getIntensityIndex();

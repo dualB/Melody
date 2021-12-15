@@ -1,9 +1,9 @@
 #include "ModifierBreath.h"
 
-ModifierBreath::ModifierBreath(unsigned int denom, Sequence *note) : Modifier(note)
+ModifierBreath::ModifierBreath(unsigned int denom, unsigned int num, Sequence *note) : Modifier(note)
 {
     _denominator = denom==0?16:denom;
-    _numerator = 1;
+    _numerator = num>_denominator?_denominator:num;
     _isBreathingNow = true;
 }
 
@@ -11,21 +11,7 @@ bool ModifierBreath::hasNext()
 {
     int tieOrBreath = get()->isTieOrBreath();
     return get()->hasNext() || (tieOrBreath==0 && !_isBreathingNow) ;
-   /* int tieOrBreath = get()->isTieOrBreath();
 
-    if (tieOrBreath != 0)
-    {
-        return get()->hasNext();
-    }
-    else
-    {
-        if(!_isBreathingNow){
-            return get()->hasNext();
-        }
-        else{
-            return false;
-        }
-    }*/
 }
 
 void ModifierBreath::restart()
@@ -37,7 +23,6 @@ void ModifierBreath::restart()
 void ModifierBreath::next()
 {
     int tieOrBreath = get()->isTieOrBreath();
-    
     if (tieOrBreath != 0)
     {
         get()->next();
@@ -65,6 +50,7 @@ int ModifierBreath::isTieOrBreath()
 unsigned int ModifierBreath::getDurationNumerator()
 {
     int tieOrBreath = get()->isTieOrBreath();
+    
     if (tieOrBreath != 0)
     {
         return get()->getDurationNumerator();

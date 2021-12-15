@@ -36,6 +36,10 @@ bool SingleNoteSequence::isRest()
 {
     return _note->isRest();
 }
+int SingleNoteSequence::isTieOrBreath()
+{
+    return _note->isTieOrBreath();
+}
 unsigned int SingleNoteSequence::getDurationNumerator()
 {
     return _note->getDurationNumerator();
