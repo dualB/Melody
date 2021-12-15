@@ -20,6 +20,7 @@ public:
 
 	int getNoteIndex() { return get()->getNoteIndex(); }
 	bool isRest() { return get()->isRest(); }
+	int isTieOrBreath() {return get()->isTieOrBreath();}
 	unsigned int getDurationNumerator() { return get()->getDurationNumerator(); }
 	unsigned int getDurationDenominator() { return get()->getDurationDenominator(); }
 	int getIntensityIndex() { return get()->getIntensityIndex(); }

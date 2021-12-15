@@ -89,6 +89,10 @@ bool SimpleSequence::isRest()
 {
     return _cursor->sequence->isRest();
 }
+int SimpleSequence::isTieOrBreath()
+{
+    return _cursor->sequence->isTieOrBreath();
+}
 unsigned int SimpleSequence::getDurationNumerator()
 {
     return _cursor->sequence->getDurationNumerator();

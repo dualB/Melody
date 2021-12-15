@@ -7,6 +7,7 @@
 #include "Modifier.h"
 #include "ModifierDuration.h"
 #include "ModifierBreath.h"
+#include "ModifierTie.h"
 #include "ModifierRepetition.h"
 #include "ModifierIntensity.h"
 #include "ModifierIndex.h"
@@ -88,12 +89,12 @@ Sequence *SequenceParser::parseGroup(Streamer *stream)
     parseWS(stream);
     if (isGroupEnd(stream->peek()))
     {
-        //ok
+        // ok
         stream->read();
     }
     else
     {
-        return sequence; //problem..
+        return sequence; // problem..
     }
     parseWS(stream);
     if (isModifier(stream->peek()))
@@ -144,15 +145,17 @@ Sequence *SequenceParser::parseModifier(Streamer *stream, Sequence *original)
         case SYMBOL_DURATION_HALF:
         case SYMBOL_DURATION_THREE_HALF:
 
-            cur = new ModifierDuration(c == SYMBOL_DURATION_THREE_HALF ? 3 : c == SYMBOL_DURATION_DOUBLE ? 2 : 1,
-                                       c == SYMBOL_DURATION_THREE_HALF ? 2 : c == SYMBOL_DURATION_DOUBLE ? 1 : 2,
+            cur = new ModifierDuration(c == SYMBOL_DURATION_THREE_HALF ? 3 : c == SYMBOL_DURATION_DOUBLE ? 2
+                                                                                                         : 1,
+                                       c == SYMBOL_DURATION_THREE_HALF ? 2 : c == SYMBOL_DURATION_DOUBLE ? 1
+                                                                                                         : 2,
                                        cur);
             break;
         case SYMBOL_INTERPRETATION_BREATH:
-            cur = parseBreath(stream,cur);
+            cur = parseBreath(stream, cur);
             break;
         case SYMBOL_INTERPRETATION_TIE:
-            cur = new ModifierBreath(-1,cur);
+            cur = new ModifierTie(cur);
             break;
         case SYMBOL_DYNAMICS_PIANO:
         case SYMBOL_DYNAMICS_FORTE:
@@ -201,9 +204,16 @@ Sequence *SequenceParser::parseBreath(Streamer *stream, Sequence *original)
 {
     parseWS(stream);
     unsigned int denominateur = parseInteger(stream);
-    return new ModifierBreath(denominateur, original);
+    unsigned int numerator = 1;
+    parseWS(stream);
+    if (stream->peek() == SYMBOL_INTERPRETATION_BREATH_SEPARATOR)
+    {
+        stream->read();
+        parseWS(stream);
+        numerator = parseInteger(stream);
+    }
+    return new ModifierBreath(denominateur, numerator,original);
 }
-
 
 unsigned int SequenceParser::parseInteger(Streamer *stream)
 {

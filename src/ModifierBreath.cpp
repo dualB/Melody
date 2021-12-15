@@ -1,31 +1,34 @@
 #include "ModifierBreath.h"
 
-ModifierBreath::ModifierBreath(unsigned int denom, Sequence *note) : Modifier(note)
+ModifierBreath::ModifierBreath(unsigned int denom, unsigned int num, Sequence *note) : Modifier(note)
 {
-    _isTie = denom < 0;
-    _denominator = denom > 0  ? denom : 1;
-    _numerator = denom > 0 || _isTie ? 1 : 0;
-    _isBreathingNow = false;
+    _denominator = denom==0?16:denom;
+    _numerator = num>_denominator?_denominator:num;
+    _isBreathingNow = true;
 }
 
 bool ModifierBreath::hasNext()
 {
-    return (!_isTie && !_isBreathingNow) || get()->hasNext();
+    int tieOrBreath = get()->isTieOrBreath();
+    return get()->hasNext() || (tieOrBreath==0 && !_isBreathingNow) ;
+
 }
+
 void ModifierBreath::restart()
 {
-    _isBreathingNow = false;
+    _isBreathingNow = true;
     get()->restart();
 }
+
 void ModifierBreath::next()
 {
-    if (_isTie)
+    int tieOrBreath = get()->isTieOrBreath();
+    if (tieOrBreath != 0)
     {
         get()->next();
     }
     else
     {
-
         if (_isBreathingNow)
         {
             _isBreathingNow = false;
@@ -38,11 +41,62 @@ void ModifierBreath::next()
     }
 }
 
-int ModifierBreath::length()
+int ModifierBreath::isTieOrBreath()
 {
-    return 2 * get()->length();
+    int tieOrBreath = get()->isTieOrBreath();
+    return tieOrBreath == 0 ? -1 : tieOrBreath;
 }
 
-unsigned int ModifierBreath::getDurationNumerator() { return  _isBreathingNow ? _numerator : get()->getDurationNumerator() * _denominator - _numerator * get()->getDurationDenominator(); }
-unsigned int ModifierBreath::getDurationDenominator() { return _isBreathingNow ? _denominator : get()->getDurationDenominator() * _denominator; }
-bool ModifierBreath::isRest() { return _isBreathingNow; }
+unsigned int ModifierBreath::getDurationNumerator()
+{
+    int tieOrBreath = get()->isTieOrBreath();
+    
+    if (tieOrBreath != 0)
+    {
+        return get()->getDurationNumerator();
+    }
+    else
+    {
+        if (_isBreathingNow)
+        {
+            return _numerator;
+        }
+        else
+        {
+            return get()->getDurationNumerator() * _denominator - _numerator * get()->getDurationDenominator();
+        }
+    }
+}
+
+unsigned int ModifierBreath::getDurationDenominator()
+{
+    int tieOrBreath = get()->isTieOrBreath();
+    if (tieOrBreath != 0)
+    {
+        return get()->getDurationDenominator();
+    }
+    else
+    {
+        if (_isBreathingNow)
+        {
+            return _denominator;
+        }
+        else
+        {
+            return get()->getDurationDenominator() * _denominator;
+        }
+    }
+}
+
+bool ModifierBreath::isRest()
+{
+    int tieOrBreath = get()->isTieOrBreath();
+    if (tieOrBreath != 0)
+    {
+        return get()->isRest();
+    }
+    else
+    {
+        return _isBreathingNow;
+    }
+}
