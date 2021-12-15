@@ -13,18 +13,16 @@ public:
 	bool hasNext();
 	void restart();
 	void next();
-	int length();
-	bool isRest() ;
+	bool isRest();
+	int isTieOrBreath();
 	unsigned int getDurationNumerator();
 	unsigned int getDurationDenominator();
 
 protected:
-
 private:
 	unsigned int _numerator;
 	unsigned int _denominator;
 	bool _isBreathingNow;
-	bool _isTie;
 };
 
 #endif

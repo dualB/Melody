@@ -7,6 +7,7 @@
 #include "Modifier.h"
 #include "ModifierDuration.h"
 #include "ModifierBreath.h"
+#include "ModifierTie.h"
 #include "ModifierRepetition.h"
 #include "ModifierIntensity.h"
 #include "ModifierIndex.h"
@@ -152,7 +153,7 @@ Sequence *SequenceParser::parseModifier(Streamer *stream, Sequence *original)
             cur = parseBreath(stream,cur);
             break;
         case SYMBOL_INTERPRETATION_TIE:
-            cur = new ModifierBreath(-1,cur);
+            cur = new ModifierTie(cur);
             break;
         case SYMBOL_DYNAMICS_PIANO:
         case SYMBOL_DYNAMICS_FORTE:
