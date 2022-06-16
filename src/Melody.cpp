@@ -34,13 +34,17 @@ Melody::Melody(String score, unsigned int tempo)
 
 bool Melody::setTempo(unsigned int tempo)
 {
-	if (tempo == 0)
+	_tempo = tempo;
+	if (tempo > 0)
 	{
+		_base_duration = 1000 * 60 / _tempo;
+		return true;
+	}
+	else
+	{
+		_base_duration = 0;
 		return false;
 	}
-	_tempo = tempo;
-	_base_duration = 1000 * 60 / _tempo;
-	return true;
 }
 
 unsigned int Melody::getTempo()
