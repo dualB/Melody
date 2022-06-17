@@ -54,6 +54,7 @@
 #define SYMBOL_WHITESPACE_HORIZONTAL_BAR '|'
 
 
+#include <Arduino.h>
 #include "Sequence.h"
 #include "Modifier.h"
 #include "Streamer.h"
