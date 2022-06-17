@@ -6,13 +6,13 @@ Melody::Melody()
 	setTempo(DEFAULT_TEMPO);
 	restart();
 }
-Melody::Melody(char *score)
+Melody::Melody(const char *score)
 {
 	setScore(score);
 	setTempo(DEFAULT_TEMPO);
 	restart();
 }
-Melody::Melody(char *score, unsigned int tempo)
+Melody::Melody(const char *score, unsigned int tempo)
 {
 	setScore(score);
 	setTempo(tempo);
@@ -37,7 +37,7 @@ bool Melody::setTempo(unsigned int tempo)
 	_tempo = tempo;
 	if (tempo > 0)
 	{
-		_base_duration = 1000 * 60 / _tempo;
+		_base_duration = (int)(1000.0 * 60 / _tempo);
 		return true;
 	}
 	else
@@ -52,7 +52,7 @@ unsigned int Melody::getTempo()
 	return _tempo;
 }
 
-bool Melody::setScore(char *score)
+bool Melody::setScore(const char *score)
 {
 	_Sequence = SequenceParser::parse(score);
 	return true;

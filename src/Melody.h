@@ -16,12 +16,12 @@ class Melody
 
 public:
 	Melody();
-	Melody(char *);
-	Melody(char *, unsigned int);
+	Melody(const char *);
+	Melody(const char *, unsigned int);
 	Melody(String);
 	Melody(String, unsigned int);
 	bool setTempo(unsigned int);
-	bool setScore(char *);
+	bool setScore(const char *);
 	bool setScore(String);
 	unsigned int getTempo();
 	bool hasNext();
